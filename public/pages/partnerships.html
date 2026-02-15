@@ -3,67 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partnerships & Advertising - Humbu Wandeme Digital</title>
+    <title>Strategic Partnerships | Imperial Omega</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .partnership-badge { background: #00A859; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 10px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .pricing-item { background: #f9f9f9; padding: 1.5rem; border-radius: 10px; border: 1px solid #eee; text-align: center; }
-        .price { font-size: 1.5rem; font-weight: bold; color: #00A859; margin: 1rem 0; }
+        :root { --imperial-green: #00ff88; --imperial-blue: #001f3f; --imperial-gold: #ffd966; }
+        .badge { background: var(--imperial-green); color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+        .cipc-text { color: var(--imperial-gold); font-family: monospace; font-size: 0.9rem; margin-top: 10px; display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .card { background: #111a26; border: 1px solid #2d3a5e; border-radius: 16px; padding: 30px; transition: 0.3s; color: #e0e5f0; }
+        .card:hover { border-color: var(--imperial-green); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,255,136,0.1); }
+        .price-tag { font-size: 1.8rem; font-weight: 800; color: var(--imperial-green); margin: 15px 0; font-family: monospace; }
+        .yoco-btn { background: var(--imperial-green); color: #001f3f; padding: 12px 25px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; width: 100%; text-align: center; }
     </style>
 </head>
-<body>
+<body style="background: #0a0f1e; color: #fff;">
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">Humbu Wandeme Digital</div>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="../payment-portal.html" class="nav-link">Payments</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../dashboard.html" class="btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero" style="background: #001f3f; color: white; padding: 100px 0 50px; text-align: center;">
-        <div class="container">
-            <span class="partnership-badge">B-BBEE Level 1 Contributor</span>
-            <h1>Strategic Partnerships</h1>
-            <p>Collaborating to build South Africa's digital infrastructure</p>
-        </div>
+    <section style="background: linear-gradient(180deg, #001f3f 0%, #0a0f1e 100%); padding: 100px 5% 60px; text-align: center;">
+        <span class="badge">B-BBEE Level 1 Contributor</span>
+        <h1 style="font-size: 3.5rem; margin: 20px 0;">Strategic Partnerships</h1>
+        <p style="font-size: 1.2rem; color: #a0b5d0;">Integrating the Imperial Stack across the SADC Trade Corridor.</p>
+        <span class="cipc-text">🏛️ CIPC: 2026/1730663/07 | SADC Trade Node #ZA-001</span>
     </section>
 
-    <section class="section" style="padding: 50px 0;">
-        <div class="container">
-            <div class="service-card">
-                <h2>🤝 Partner with Us</h2>
-                <p>We are looking for strategic alliances in AI, Machine Learning, and Cloud Migration projects.</p>
-                
-                <div class="pricing-grid">
-                    <div class="pricing-item">
-                        <h3>Tech Collaboration</h3>
-                        <p>Joint development on Imperial Stack projects</p>
-                        <div class="price">Open Discussion</div>
-                    </div>
-                    <div class="pricing-item">
-                        <h3>Resource Sponsorship</h3>
-                        <p>Feature your tool in our Resource Library</p>
-                        <div class="price">R 1,500/month</div>
-                    </div>
-                    <div class="pricing-item">
-                        <h3>Enterprise Solutions</h3>
-                        <p>Wholesale Cloud & AI implementation</p>
-                        <div class="price">Quote Based</div>
-                    </div>
-                </div>
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px 100px;">
+        <div class="grid">
+            <div class="card">
+                <h3>Fleet Analytics Node</h3>
+                <p>Access live data from 17 vehicles & 43 villages. Integrate your sensors into our 33-port grid.</p>
+                <div class="price-tag">Open Discussion</div>
+                <a href="contact.html" class="yoco-btn" style="background: transparent; border: 1px solid var(--imperial-green); color: var(--imperial-green);">Request API Access</a>
+            </div>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <p>Ready to collaborate?</p>
-                    <a href="contact.html" class="btn" style="background: #00A859; color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px;">Send a Proposal</a>
-                </div>
+            <div class="card">
+                <h3>Imperial Collector</h3>
+                <p>Automated debt recovery via SMS + Yoco. Join our recovery network (78% success rate).</p>
+                <div class="price-tag">R 1,500/mo</div>
+                <a href="https://c.yoco.com/checkout/ch_rLQQaAAP3GpSpQ1S66yubZkL" class="yoco-btn">Activate Node</a>
+            </div>
+
+            <div class="card">
+                <h3>Cluster Member</h3>
+                <p>Full company registration, SARS Tax PIN, and Imperial Portal access (Port 8087/8102).</p>
+                <div class="price-tag">R 175 / Once</div>
+                <a href="https://c.yoco.com/checkout/ch_rLQQaAAP3GpSpQ1S66yubZkL?amount=17500" class="yoco-btn">Register Company</a>
+            </div>
+
+            <div class="card">
+                <h3>Omega Activation</h3>
+                <p>Instant activation for small-scale trade nodes. Includes first 10 recovery SMS free.</p>
+                <div class="price-tag">R 10 / week</div>
+                <a href="https://c.yoco.com/checkout/ch_rLQQaAAP3GpSpQ1S66yubZkL" class="yoco-btn">Pay & Activate</a>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 </html>
