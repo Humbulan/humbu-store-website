@@ -1,0 +1,2824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quest: A Beginner's Journey - Humbu Wandeme Trading Enterprise</title>
+    <meta name="description" content="Code Quest: A Complete Beginner's Programming Journey by Humbu Wandeme Trading Enterprise - Learn coding from scratch with interactive examples">
+    <meta name="keywords" content="programming, coding, learn to code, beginner programming, Python, JavaScript, web development">
+    <meta name="author" content="Humbu Wandeme Trading Enterprise">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="Code Quest: A Beginner's Programming Journey">
+    <meta property="og:description" content="Learn programming from scratch with this interactive online book">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://humbulan.github.io/Programming-language/">
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Code Quest: Learn Programming">
+    <meta name="twitter:description" content="Interactive programming book for beginners">
+    
+    <style>
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 90;
+            display: none;
+        }
+
+        .quick-nav-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f8fafc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-nav-item:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Print Styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+                box-shadow: none !important;
+                margin: 0 !important;
+                max-width: 100% !important;
+            }
+            
+            .page {
+                display: block !important;
+                page-break-after: always;
+            }
+            
+            .page.active {
+                display: block !important;
+            }
+        }
+
+        /* Dark Mode */
+        .dark-mode {
+            background: #1f2937 !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+            background: #374151 !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .header {
+            background: linear-gradient(135deg, #111827 0%, #1e40af 100%) !important;
+        }
+
+        .dark-mode .nav.container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+            background: #4b5563 !important;
+            border-color: #6b7280 !important;
+        }
+
+        .dark-mode .nav-tab {
+            background: #6b7280 !important;
+            border-color: #9ca3af !important;
+            color: #f9fafb !important;
+        }
+
+        .dark-mode .nav-tab.active {
+            background: #3b82f6 !important;
+            border-color: #3b82f6 !important;
+        }
+
+        .dark-mode .content-section,
+        .dark-mode .page-header {
+            background: #4b5563 !important;
+            color: #f9fafb !important;
+        }
+
+        /* Search Modal */
+        .search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 100px;
+        }
+
+        .search-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .dark-mode .search-content {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        /* Certificate */
+        .certificate {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 600px;
+            text-align: center;
+            border: 10px solid #f59e0b;
+        }
+
+        .dark-mode .certificate {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        /* Utility Classes */
+        .floating-buttons { bottom: 5px; right: 5px; scale: 0.8;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 80;
+        }
+
+        .utility-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+
+        .utility-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .dark-mode-toggle {
+            background: #6b7280;
+        }
+
+        .bookmark-btn {
+            background: #10b981;
+        }
+
+        .search-btn {
+            background: #8b5cf6;
+        }
+
+        .print-btn {
+            background: #f59e0b;
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        /* Enhanced Mobile Styles */
+        @media (max-width: 768px) {
+            .floating-buttons { bottom: 5px; right: 5px; scale: 0.8;
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .utility-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 16px;
+            }
+            
+            .quick-nav {
+                display: none !important;
+            }
+            
+            .certificate {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .dark-mode .contact-form {
+            background: #4b5563;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .dark-mode .form-input {
+            background: #6b7280;
+            border-color: #9ca3af;
+            color: #f9fafb;
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background: #2563eb;
+        }
+
+        /* Social Sharing */
+        .social-sharing {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .social-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .twitter-share { background: #1da1f2; }
+        .facebook-share { background: #1877f2; }
+        .linkedin-share { background: #0a66c2; }
+        .whatsapp-share { background: #25d366; }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Table of Contents */
+        .toc-sidebar {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 90;
+            max-width: 250px;
+            max-height: 70vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .dark-mode .toc-sidebar {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        .toc-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #3b82f6;
+        }
+
+        .toc-item {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f8fafc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #374151;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .toc-item {
+            background: #4b5563;
+            color: #f9fafb;
+        }
+
+        .toc-item:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* Progress Save Indicator */
+        .save-indicator {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: none;
+            z-index: 100;
+        }
+
+        /* Enhanced Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        button:focus, 
+        input:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .utility-btn {
+                border: 2px solid white;
+            }
+            
+            .nav-tab {
+                border: 2px solid;
+            }
+        }
+    </style>
+    
+    <!-- Your existing styles remain below -->
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100%;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100%;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+        }
+
+        /* Your existing CSS continues here... */
+        /* [ALL YOUR EXISTING CSS CODE REMAINS UNCHANGED] */
+        /* I'm keeping all your original styles exactly as they were */
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .progress-bar {
+            flex: 1;
+            max-width: 300px;
+            height: 8px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        .nav.container { overflow-x: auto; -webkit-overflow-scrolling: touch;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0 2rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 0.5rem;
+            padding: 1rem 0;
+        }
+
+        .nav-tab {
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-weight: 500;
+            min-width: fit-content;
+        }
+
+        .nav-tab:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .nav-tab.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        /* Content */
+        .content {
+            padding: 2rem;
+            min-height: 70vh;
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: 16px;
+            border: 1px solid #0ea5e9;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0c4a6e;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: #0369a1;
+            margin-bottom: 0;
+        }
+
+        /* Enhanced Cover Page */
+        .cover-page {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #06b6d4 100%);
+            color: white;
+            border-radius: 0;
+            margin: -2rem -2rem 2rem -2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-cover-design {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 0 auto 2rem auto;
+            max-width: 500px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .decorative-circle-1 {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .decorative-circle-2 {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .book-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #ffffff, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .book-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .edition-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .programming-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .programming-icon {
+            background: rgba(255,255,255,0.15);
+            padding: 0.75rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .programming-icon:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.25);
+        }
+
+        .enterprise-branding {
+            background: rgba(255,255,255,0.15);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 450px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .enterprise-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+
+        .enterprise-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .enterprise-tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .company-motto {
+            text-align: center;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .book-features {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .features-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .feature-item {
+            padding: 0.5rem 0;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .start-button:hover {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        .book-stats {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #065f46;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-primary {
+            background: rgba(59, 130, 246, 0.2);
+            color: #1e40af;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.2);
+            color: #92400e;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            position: relative;
+        }
+
+        .code-header {
+            background: #374151;
+            color: #d1d5db;
+            padding: 0.5rem 1rem;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+            border-radius: 8px 8px 0 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .keyword { color: #f59e0b; }
+        .string { color: #10b981; }
+        .comment { color: #6b7280; font-style: italic; }
+        .number { color: #3b82f6; }
+
+        /* Interactive elements */
+        .interactive-demo {
+            background: #f0f9ff;
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #0c4a6e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .try-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .try-button:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .demo-output {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+            min-height: 50px;
+            font-family: monospace;
+        }
+
+        /* Exercise sections */
+        .exercise {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .exercise-title {
+            font-weight: bold;
+            color: #92400e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exercise-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #d97706;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 0.5rem 0;
+        }
+
+        .check-answer {
+            background: #d97706;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .check-answer:hover {
+            background: #b45309;
+        }
+
+        /* Navigation buttons */
+        .page-navigation { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-button:hover {
+            background: #4f46e5;
+            transform: translateY(-1px);
+        }
+
+        .nav-button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .progress-bar {
+                max-width: 100%;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .book-title {
+                font-size: 2.5rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .cover-page {
+                margin: -1rem -1rem 1rem -1rem;
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+
+            .book-cover-design {
+                max-width: 100%;
+                padding: 2rem 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Content sections */
+        .content-section {
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0f2fe;
+        }
+
+        .highlight-box {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .tip-box {
+            background: #fef7ff;
+            border: 1px solid #d8b4fe;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            color: #7c3aed;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .language-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .language-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .language-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #0c4a6e;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .career-path {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .career-path:hover {
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+
+        .career-title {
+            font-weight: bold;
+            color: #059669;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .salary-range {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <h2>Loading Code Quest...</h2>
+        <p>Preparing your programming journey</p>
+    </div>
+
+    <!-- Save Indicator -->
+    <div class="save-indicator" id="saveIndicator">
+        Progress Saved! ✓
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Table of Contents Sidebar -->
+    <div class="toc-sidebar no-print" id="tocSidebar">
+        <div class="toc-title">Table of Contents</div>
+        <a href="#page0" class="toc-item" onclick="showPage(0)">📖 Cover</a>
+        <a href="#page1" class="toc-item" onclick="showPage(1)">🚀 Introduction</a>
+        <a href="#page2" class="toc-item" onclick="showPage(2)">💡 What is Coding?</a>
+        <a href="#page3" class="toc-item" onclick="showPage(3)">🎯 Choose Language</a>
+        <a href="#page4" class="toc-item" onclick="showPage(4)">🔧 Basic Concepts</a>
+        <a href="#page5" class="toc-item" onclick="showPage(5)">🛠️ Projects</a>
+        <a href="#page6" class="toc-item" onclick="showPage(6)">🎓 Next Steps</a>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="quick-nav no-print" id="quickNav">
+        <a href="#page0" class="quick-nav-item" onclick="showPage(0)">Cover</a>
+        <a href="#page1" class="quick-nav-item" onclick="showPage(1)">Intro</a>
+        <a href="#page2" class="quick-nav-item" onclick="showPage(2)">Coding</a>
+        <a href="#page3" class="quick-nav-item" onclick="showPage(3)">Language</a>
+        <a href="#page4" class="quick-nav-item" onclick="showPage(4)">Concepts</a>
+        <a href="#page5" class="quick-nav-item" onclick="showPage(5)">Projects</a>
+        <a href="#page6" class="quick-nav-item" onclick="showPage(6)">Career</a>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal no-print" id="searchModal">
+        <div class="search-content">
+            <h3>Search Code Quest</h3>
+            <input type="text" id="searchInput" placeholder="Search for topics, concepts, or keywords..." 
+                   style="width: 100%; padding: 10px; margin: 10px 0; border: 2px solid #3b82f6; border-radius: 6px;">
+            <div id="searchResults"></div>
+            <button onclick="closeSearch()" style="margin-top: 10px; padding: 8px 16px; background: #6b7280; color: white; border: none; border-radius: 4px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Certificate of Completion -->
+    <div class="certificate no-print" id="certificate">
+        <h2>🎓 Certificate of Completion</h2>
+        <p>This certifies that</p>
+        <h3 id="certificateName">[Student Name]</h3>
+        <p>has successfully completed</p>
+        <h4>Code Quest: A Beginner's Programming Journey</h4>
+        <p>Presented by</p>
+        <p><strong>Humbu Wandeme Trading Enterprise</strong></p>
+        <p id="certificateDate"></p>
+        <button onclick="closeCertificate()" style="margin-top: 20px; padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 6px;">Close</button>
+        <button onclick="printCertificate()" style="margin-top: 10px; padding: 10px 20px; background: #10b981; color: white; border: none; border-radius: 6px;">Print Certificate</button>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons no-print">
+        <button class="utility-btn dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+            🌙
+        </button>
+        <button class="utility-btn toc-btn" onclick="toggleTOC()" title="Table of Contents">
+            📑
+        </button>
+        <button class="utility-btn bookmark-btn" onclick="saveBookmark()" title="Save Progress">
+            🔖
+        </button>
+        <button class="utility-btn search-btn" onclick="openSearch()" title="Search">
+            🔍
+        </button>
+        <button class="utility-btn print-btn" onclick="printBook()" title="Print Book">
+            🖨️
+        </button>
+        <button class="utility-btn certificate-btn" onclick="window.location.href="https://monitor.humbu.store/pages/store.html"" title="Get Certificate" style="background: #8b5cf6;">
+            🎓
+        </button>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    📚 Code Quest: A Beginner's Journey <br> <span style="font-size:0.7rem; color:#00ff88;">Powered by Imperial Omega Stack | Gateway 8102</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div style="font-size: 0.9rem; opacity: 0.9;">
+                    Page <span id="currentPage">1</span> of <span id="totalPages">7</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-container">
+            <div class="nav-tabs" id="navTabs">
+                <div class="nav-tab active" data-page="0">📖 Cover</div>
+                <div class="nav-tab" data-page="1">🚀 Introduction</div>
+                <div class="nav-tab" data-page="2">💡 What is Coding?</div>
+                <div class="nav-tab" data-page="3">🎯 Choose Language</div>
+                <div class="nav-tab" data-page="4">🔧 Basic Concepts</div>
+                <div class="nav-tab" data-page="5">🛠️ Projects</div>
+                <div class="nav-tab" data-page="6">🎓 Next Steps</div>
+            </div>
+        </nav>
+
+        <main class="content">
+            <!-- Enhanced Cover Page -->
+            <div class="page active" id="page0">
+                <div class="cover-page">
+                    <!-- Professional Book Cover Design -->
+                    <div class="book-cover-design">
+                        <div class="decorative-circle-1"></div>
+                        <div class="decorative-circle-2"></div>
+                        
+                        <!-- Main Title -->
+                        <h1 class="book-title">📚 CODE QUEST</h1>
+                        
+                        <!-- Subtitle -->
+                        <p class="book-subtitle">
+                            A Complete Beginner's Journey<br>into Programming
+                        </p>
+                        
+                        <!-- Edition Badge -->
+                        <div class="edition-badge">
+                            📖 2024 Beginner's Edition
+                        </div>
+                        
+                        <!-- Programming Language Icons -->
+                        <div class="programming-icons">
+                            <div class="programming-icon">🐍</div>
+                            <div class="programming-icon">🌐</div>
+                            <div class="programming-icon">⚛️</div>
+                            <div class="programming-icon">🎮</div>
+                            <div class="programming-icon">📱</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Enterprise Branding -->
+                    <div class="enterprise-branding">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+                            <div class="enterprise-logo">🏢</div>
+                            <div>
+                                <div class="enterprise-name">
+                                    Humbu Wandeme Trading Enterprise
+                                </div>
+                                <div class="enterprise-tagline">
+                                    Empowering the Next Generation of Developers
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="company-motto">
+                            "Building Tomorrow's Tech Leaders Today"
+                        </div>
+                    </div>
+
+                    <!-- Book Features Section -->
+                    <div class="book-features">
+                        <h3 class="features-title">🌟 What You'll Discover</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-title">✨ Core Concepts</div>
+                                <div class="feature-description">Variables, functions, loops & more</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-title">🛠️ Real Projects</div>
+                                <div class="feature-description">Games, apps & websites you can build</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-title">🚀 Career Paths</div>
+                                <div class="feature-description">$50K-$150K+ opportunities await</div>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-title">🎯 Hands-on Practice</div>
+                                <div class="feature-description">Interactive exercises & challenges</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action Section -->
+                    <div class="cta-section">
+                        <p class="cta-text">
+                            🎯 <strong>Ready to transform your future?</strong><br>
+                            Join thousands of students who started their coding journey with zero experience and now build amazing digital products!
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                            <button class="start-button" onclick="nextPage()">
+                                🚀 Begin Your Coding Adventure
+                            </button>
+                            
+                            <div class="book-stats">
+                                📚 7 Comprehensive Chapters • 🕐 2-3 Hours Reading Time • 💯 100% Beginner Friendly
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Sharing -->
+                    <div class="social-sharing no-print">
+                        <button class="social-btn twitter-share" onclick="shareOnTwitter()">Twitter</button>
+                        <button class="social-btn facebook-share" onclick="shareOnFacebook()">Facebook</button>
+                        <button class="social-btn linkedin-share" onclick="shareOnLinkedIn()">LinkedIn</button>
+                        <button class="social-btn whatsapp-share" onclick="shareOnWhatsApp()">WhatsApp</button>
+                    </div>
+
+                    <!-- Footer Badges -->
+                    <div class="footer-badges">
+                        <div class="badge badge-success">
+                            ✅ No Experience Required
+                        </div>
+                        <div class="badge badge-primary">
+                            🎮 Interactive Learning
+                        </div>
+                        <div class="badge badge-warning">
+                            🏆 Career Ready
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 1: Introduction to Programming -->
+            <div class="page" id="page1">
+                <div class="page-header">
+                    <h1 class="page-title">🚀 Introduction to Programming</h1>
+                    <p class="page-subtitle">Welcome to the exciting world of code!</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">What You'll Learn in This Book</h2>
+                    <p>Programming is like learning a new language – but instead of talking to people, you're talking to computers! This book will guide you through:</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                        <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                            <h3 style="color: #1e40af; margin-bottom: 0.5rem;">🎯 Core Concepts</h3>
+                            <p>Variables, functions, loops, and data types</p>
+                        </div>
+                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #10b981;">
+                            <h3 style="color: #065f46; margin-bottom: 0.5rem;">🛠️ Hands-on Practice</h3>
+                            <p>Real projects you can build and show off</p>
+                        </div>
+                        <div style="background: #fefce8; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #eab308;">
+                            <h3 style="color: #a16207; margin-bottom: 0.5rem;">🎓 Career Paths</h3>
+                            <p>Where programming can take your future</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>💡 Fun Fact:</strong> The first computer programmer was Ada Lovelace in 1843! She wrote the world's first computer algorithm for Charles Babbage's Analytical Engine.
+                </div>
+
+                <div class="interactive-demo">
+                    <div class="demo-title">🎮 Try Your First Code!</div>
+                    <p>Click the button below to see what programming can do:</p>
+                    <button class="try-button" onclick="runFirstDemo()">Run My First Program!</button>
+                    <div class="demo-output" id="firstDemo">Click the button above to see the magic! ✨</div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">📝 Quick Exercise</div>
+                    <p>What do you hope to build with programming? Write your dream project below:</p>
+                    <input type="text" class="exercise-input" placeholder="e.g., A mobile app, a website, a game..." id="dreamProject">
+                    <button class="check-answer" onclick="saveDreamProject()">Save My Dream! 💫</button>
+                    <div id="dreamResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form no-print">
+                    <h3 class="section-title">💬 Questions? Contact Us!</h3>
+                    <p>Have questions about programming or need guidance? Send us a message!</p>
+                    <div class="form-group">
+                        <input type="text" class="form-input" id="contactName" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-input" id="contactEmail" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-input form-textarea" id="contactMessage" placeholder="Your message or question..."></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitContactForm()">Send Message</button>
+                    <div id="contactResponse" style="margin-top: 1rem;"></div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()" disabled>
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="nextPage()">
+                        Next: What is Coding? →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 2: What is Coding & Why Learn It? -->
+            <div class="page" id="page2">
+                <div class="page-header">
+                    <h1 class="page-title">💡 What is Coding & Why Learn It?</h1>
+                    <p class="page-subtitle">Understanding the power of programming</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">What is Coding?</h2>
+                    <p>Coding (or programming) is the process of creating instructions for computers to follow. Think of it like writing a recipe, but instead of making cookies, you're making apps, websites, games, and more!</p>
+
+                    <div class="code-block">
+                        <div class="code-header">🍪 A Recipe vs Code Comparison</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <strong style="color: #f59e0b;">Recipe:</strong><br>
+                                1. Preheat oven to 350°F<br>
+                                2. Mix flour and sugar<br>
+                                3. Add eggs<br>
+                                4. Bake for 12 minutes
+                            </div>
+                            <div>
+                                <strong style="color: #10b981;">Code:</strong><br>
+                                <span class="keyword">function</span> <span style="color: #f9fafb;">bakeCookies</span>() {<br>
+                                &nbsp;&nbsp;<span style="color: #f9fafb;">oven.preheat</span>(<span class="number">350</span>);<br>
+                                &nbsp;&nbsp;<span style="color: #f9fafb;">mix</span>(<span class="string">"flour"</span>, <span class="string">"sugar"</span>);<br>
+                                &nbsp;&nbsp;<span style="color: #f9fafb;">add</span>(<span class="string">"eggs"</span>);<br>
+                                &nbsp;&nbsp;<span style="color: #f9fafb;">bake</span>(<span class="number">12</span>);<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Why Should You Learn to Code?</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="tip-box">
+                            <div class="tip-title">💰 Great Career Opportunities</div>
+                            <p>Software developers earn an average of $70,000-$120,000+ per year, and the demand is growing every day!</p>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">🧠 Problem-Solving Skills</div>
+                            <p>Programming teaches you to break down complex problems into smaller, manageable pieces.</p>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">🌍 Change the World</div>
+                            <p>Code powers everything from social media to space exploration. You can build solutions that help millions!</p>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">🎨 Creative Expression</div>
+                            <p>Programming is an art form! You can create beautiful websites, fun games, and innovative apps.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <div class="demo-title">🎯 Programming in Action</div>
+                    <p>See how a simple program can solve everyday problems:</p>
+                    <button class="try-button" onclick="runCalculatorDemo()">Calculate My Age in Days!</button>
+                    <div style="margin: 1rem 0;">
+                        <input type="number" placeholder="Enter your age" id="ageInput" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; margin-right: 0.5rem;">
+                    </div>
+                    <div class="demo-output" id="calculatorDemo">Enter your age and click the button! 🎂</div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">🤔 Think About It</div>
+                    <p>Which of these reasons for learning to code excites you most?</p>
+                    <div style="margin: 1rem 0;">
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="career"> 💼 Career opportunities</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="creativity"> 🎨 Creative expression</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="problem"> 🧩 Problem-solving</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="reason" value="world"> 🌟 Changing the world</label>
+                    </div>
+                    <button class="check-answer" onclick="checkMotivation()">Share My Motivation! 🚀</button>
+                    <div id="motivationResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()">
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="nextPage()">
+                        Next: Choose Your Language →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 3: Choosing Your First Programming Language -->
+            <div class="page" id="page3">
+                <div class="page-header">
+                    <h1 class="page-title">🎯 Choosing Your First Programming Language</h1>
+                    <p class="page-subtitle">Find the perfect language to start your journey</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Popular Beginner-Friendly Languages</h2>
+                    <p>Don't worry about choosing the "perfect" language – the concepts you learn in one language transfer to others! Here are the most beginner-friendly options:</p>
+
+                    <div class="language-grid">
+                        <div class="language-card" onclick="selectLanguage('python')">
+                            <div class="language-name">🐍 Python</div>
+                            <p><strong>Best for:</strong> Beginners, data science, AI</p>
+                            <p><strong>Why it's great:</strong> Reads like English, very forgiving</p>
+                            <div class="code-block" style="margin-top: 1rem;">
+                                <span class="keyword">print</span>(<span class="string">"Hello, World!"</span>)
+                            </div>
+                        </div>
+
+                        <div class="language-card" onclick="selectLanguage('javascript')">
+                            <div class="language-name">🌐 JavaScript</div>
+                            <p><strong>Best for:</strong> Web development, interactive websites</p>
+                            <p><strong>Why it's great:</strong> Runs everywhere, instant results</p>
+                            <div class="code-block" style="margin-top: 1rem;">
+                                <span style="color: #f9fafb;">console.</span><span class="keyword">log</span>(<span class="string">"Hello, World!"</span>);
+                            </div>
+                        </div>
+
+                        <div class="language-card" onclick="selectLanguage('scratch')">
+                            <div class="language-name">🧩 Scratch</div>
+                            <p><strong>Best for:</strong> Complete beginners, visual learning</p>
+                            <p><strong>Why it's great:</strong> Drag-and-drop, no typing errors</p>
+                            <div style="background: #ff6b6b; color: white; padding: 0.5rem; border-radius: 4px; margin-top: 1rem; text-align: center;">
+                                [Visual Block Programming]
+                            </div>
+                        </div>
+
+                        <div class="language-card" onclick="selectLanguage('java')">
+                            <div class="language-name">☕ Java</div>
+                            <p><strong>Best for:</strong> Mobile apps, enterprise software</p>
+                            <p><strong>Why it's great:</strong> Widely used, great job prospects</p>
+                            <div class="code-block" style="margin-top: 1rem;">
+                                <span style="color: #f9fafb;">System.out.</span><span class="keyword">println</span>(<span class="string">"Hello!"</span>);
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>💡 Pro Tip:</strong> Your first language won't be your last! Most programmers know multiple languages. Start with one that excites you and matches your goals.
+                </div>
+
+                <div class="interactive-demo">
+                    <div class="demo-title">🎮 Language Recommendation Quiz</div>
+                    <p>Answer a few questions to get a personalized recommendation:</p>
+                    
+                    <div style="margin: 1rem 0;">
+                        <p><strong>What interests you most?</strong></p>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="web"> 🌐 Building websites</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="data"> 📊 Working with data</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="games"> 🎮 Creating games</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="interest" value="mobile"> 📱 Mobile apps</label>
+                    </div>
+
+                    <div style="margin: 1rem 0;">
+                        <p><strong>How do you prefer to learn?</strong></p>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="visual"> 👀 Visual/drag-and-drop</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="typing"> ⌨️ Typing code</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="learning" value="both"> 🤝 Both approaches</label>
+                    </div>
+
+                    <button class="try-button" onclick="getLanguageRecommendation()">Get My Recommendation! 🎯</button>
+                    <div class="demo-output" id="languageRecommendation">Take the quiz above to get your personalized recommendation! 🌟</div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">📝 Your Language Choice</div>
+                    <p>Based on what you've learned, which language would you like to start with?</p>
+                    <select class="exercise-input" id="chosenLanguage">
+                        <option value="">Choose your language...</option>
+                        <option value="python">🐍 Python</option>
+                        <option value="javascript">🌐 JavaScript</option>
+                        <option value="scratch">🧩 Scratch</option>
+                        <option value="java">☕ Java</option>
+                        <option value="other">🤔 I want to explore more options</option>
+                    </select>
+                    <button class="check-answer" onclick="confirmLanguageChoice()">Lock in My Choice! 🔒</button>
+                    <div id="languageResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()">
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="nextPage()">
+                        Next: Basic Concepts →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 4: Basic Programming Concepts -->
+            <div class="page" id="page4">
+                <div class="page-header">
+                    <h1 class="page-title">🔧 Basic Programming Concepts</h1>
+                    <p class="page-subtitle">The building blocks of all programs</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">1. Variables - Storing Information</h2>
+                    <p>Variables are like labeled boxes where you store information. You can put different types of data in them and use them later!</p>
+
+                    <div class="code-block">
+                        <div class="code-header">🐍 Python Examples</div>
+                        <span class="comment"># Storing different types of information</span><br>
+                        <span style="color: #f9fafb;">name</span> = <span class="string">"Alex"</span>        <span class="comment"># Text (string)</span><br>
+                        <span style="color: #f9fafb;">age</span> = <span class="number">16</span>             <span class="comment"># Number (integer)</span><br>
+                        <span style="color: #f9fafb;">height</span> = <span class="number">5.8</span>         <span class="comment"># Decimal (float)</span><br>
+                        <span style="color: #f9fafb;">is_student</span> = <span class="keyword">True</span>   <span class="comment"># True/False (boolean)</span>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <div class="demo-title">🎮 Try Variables!</div>
+                        <p>Create your own variables:</p>
+                        <input type="text" placeholder="Your name" id="varName" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                        <input type="number" placeholder="Your age" id="varAge" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                        <button class="try-button" onclick="createVariables()">Create Variables!</button>
+                        <div class="demo-output" id="variableDemo">Enter your info above! 📝</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">2. Functions - Reusable Code Blocks</h2>
+                    <p>Functions are like mini-programs that do specific tasks. You can use them over and over again!</p>
+
+                    <div class="code-block">
+                        <div class="code-header">🐍 Function Example</div>
+                        <span class="keyword">def</span> <span style="color: #f9fafb;">greet_person</span>(<span style="color: #f9fafb;">name</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> <span class="string">f"Hello, </span><span style="color: #f9fafb;">{name}</span><span class="string">! Welcome to coding!"</span><br><br>
+                        <span class="comment"># Using the function</span><br>
+                        <span style="color: #f9fafb;">message</span> = <span style="color: #f9fafb;">greet_person</span>(<span class="string">"Sarah"</span>)<br>
+                        <span class="keyword">print</span>(<span style="color: #f9fafb;">message</span>)  <span class="comment"># Output: Hello, Sarah! Welcome to coding!</span>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <div class="demo-title">🎯 Function Practice</div>
+                        <p>Try our greeting function:</p>
+                        <input type="text" placeholder="Enter a name" id="functionName" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                        <button class="try-button" onclick="runGreetingFunction()">Run Function!</button>
+                        <div class="demo-output" id="functionDemo">Enter a name and click the button! 👋</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">3. Loops - Repeating Actions</h2>
+                    <p>Loops let you repeat code multiple times without writing it over and over. Perfect for repetitive tasks!</p>
+
+                    <div class="code-block">
+                        <div class="code-header">🔄 Loop Examples</div>
+                        <span class="comment"># Count from 1 to 5</span><br>
+                        <span class="keyword">for</span> <span style="color: #f9fafb;">i</span> <span class="keyword">in</span> <span style="color: #f9fafb;">range</span>(<span class="number">1</span>, <span class="number">6</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Count: </span><span style="color: #f9fafb;">{i}</span><span class="string">"</span>)<br><br>
+                        <span class="comment"># Repeat while condition is true</span><br>
+                        <span style="color: #f9fafb;">countdown</span> = <span class="number">3</span><br>
+                        <span class="keyword">while</span> <span style="color: #f9fafb;">countdown</span> > <span class="number">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span style="color: #f9fafb;">countdown</span>)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">countdown</span> -= <span class="number">1</span>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <div class="demo-title">🔄 Loop in Action</div>
+                        <p>Watch a loop count down:</p>
+                        <button class="try-button" onclick="runCountdownLoop()">Start Countdown!</button>
+                        <div class="demo-output" id="loopDemo">Click to see the countdown! ⏰</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">4. Conditional Statements - Making Decisions</h2>
+                    <p>Conditionals let your program make decisions based on different situations!</p>
+
+                    <div class="code-block">
+                        <div class="code-header">🤔 Decision Making</div>
+                        <span style="color: #f9fafb;">temperature</span> = <span class="number">75</span><br><br>
+                        <span class="keyword">if</span> <span style="color: #f9fafb;">temperature</span> > <span class="number">80</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"It's hot! Wear shorts."</span>)<br>
+                        <span class="keyword">elif</span> <span style="color: #f9fafb;">temperature</span> > <span class="number">60</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Nice weather! Perfect for a walk."</span>)<br>
+                        <span class="keyword">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"It's cold! Bring a jacket."</span>)
+                    </div>
+
+                    <div class="interactive-demo">
+                        <div class="demo-title">🌡️ Weather Advisor</div>
+                        <p>Get clothing advice based on temperature:</p>
+                        <input type="number" placeholder="Temperature (°F)" id="tempInput" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                        <button class="try-button" onclick="getWeatherAdvice()">Get Advice!</button>
+                        <div class="demo-output" id="weatherDemo">Enter a temperature! 🌤️</div>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">🧠 Concept Check</div>
+                    <p>Match each concept with its description:</p>
+                    <div style="margin: 1rem 0;">
+                        <p><strong>Variable:</strong> 
+                        <select id="conceptMatch1" style="margin-left: 0.5rem;">
+                            <option value="">Choose...</option>
+                            <option value="correct">Stores information for later use</option>
+                            <option value="wrong1">Repeats code multiple times</option>
+                            <option value="wrong2">Makes decisions in code</option>
+                        </select></p>
+                        
+                        <p><strong>Loop:</strong> 
+                        <select id="conceptMatch2" style="margin-left: 0.5rem;">
+                            <option value="">Choose...</option>
+                            <option value="wrong1">Stores information for later use</option>
+                            <option value="correct">Repeats code multiple times</option>
+                            <option value="wrong2">Makes decisions in code</option>
+                        </select></p>
+                    </div>
+                    <button class="check-answer" onclick="checkConceptMatch()">Check My Answers! ✅</button>
+                    <div id="conceptResponse" style="margin-top: 1rem; font-weight: bold;"></div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()">
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="nextPage()">
+                        Next: Hands-on Projects →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 5: Hands-on Projects for Beginners -->
+            <div class="page" id="page5">
+                <div class="page-header">
+                    <h1 class="page-title">🛠️ Hands-on Projects for Beginners</h1>
+                    <p class="page-subtitle">Build real projects to practice your skills!</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Project-Based Learning</h2>
+                    <p>The best way to learn programming is by building real projects! Here are beginner-friendly projects that will teach you essential skills:</p>
+
+                    <div class="project-card">
+                        <div class="project-title">🎯 Project 1: Number Guessing Game</div>
+                        <p><strong>What you'll learn:</strong> Variables, loops, conditionals, user input</p>
+                        <p><strong>Description:</strong> Create a game where the computer picks a random number and the player tries to guess it!</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">🐍 Python Version</div>
+                            <span class="keyword">import</span> <span style="color: #f9fafb;">random</span><br><br>
+                            <span style="color: #f9fafb;">secret_number</span> = <span style="color: #f9fafb;">random.randint</span>(<span class="number">1</span>, <span class="number">100</span>)<br>
+                            <span style="color: #f9fafb;">guesses</span> = <span class="number">0</span><br><br>
+                            <span class="keyword">while</span> <span class="keyword">True</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">guess</span> = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Guess a number (1-100): "</span>))<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">guesses</span> += <span class="number">1</span><br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span style="color: #f9fafb;">guess</span> == <span style="color: #f9fafb;">secret_number</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Congratulations! You got it in </span><span style="color: #f9fafb;">{guesses}</span><span class="string"> tries!"</span>)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">break</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">elif</span> <span style="color: #f9fafb;">guess</span> < <span style="color: #f9fafb;">secret_number</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too low! Try higher."</span>)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">"Too high! Try lower."</span>)
+                        </div>
+
+                        <div class="interactive-demo">
+                            <div class="demo-title">🎮 Try the Game!</div>
+                            <p>I'm thinking of a number between 1 and 10. Can you guess it?</p>
+                            <input type="number" placeholder="Your guess (1-10)" id="guessInput" min="1" max="10" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                            <button class="try-button" onclick="playGuessingGame()">Make Guess!</button>
+                            <div class="demo-output" id="guessingGame">Make your first guess! 🎯</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">📝 Project 2: Personal To-Do List</div>
+                        <p><strong>What you'll learn:</strong> Lists/arrays, functions, string manipulation</p>
+                        <p><strong>Description:</strong> Build a simple app to manage your daily tasks!</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">🐍 To-Do List Functions</div>
+                            <span style="color: #f9fafb;">todo_list</span> = []<br><br>
+                            <span class="keyword">def</span> <span style="color: #f9fafb;">add_task</span>(<span style="color: #f9fafb;">task</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">todo_list.append</span>(<span style="color: #f9fafb;">task</span>)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Added: </span><span style="color: #f9fafb;">{task}</span><span class="string">"</span>)<br><br>
+                            <span class="keyword">def</span> <span style="color: #f9fafb;">show_tasks</span>():<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">for</span> <span style="color: #f9fafb;">i</span>, <span style="color: #f9fafb;">task</span> <span class="keyword">in</span> <span class="keyword">enumerate</span>(<span style="color: #f9fafb;">todo_list</span>, <span class="number">1</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"</span><span style="color: #f9fafb;">{i}</span><span class="string">. </span><span style="color: #f9fafb;">{task}</span><span class="string">"</span>)<br><br>
+                            <span class="keyword">def</span> <span style="color: #f9fafb;">complete_task</span>(<span style="color: #f9fafb;">index</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> <span class="number">0</span> <= <span style="color: #f9fafb;">index</span> < <span class="keyword">len</span>(<span style="color: #f9fafb;">todo_list</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f9fafb;">completed</span> = <span style="color: #f9fafb;">todo_list.pop</span>(<span style="color: #f9fafb;">index</span>)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">print</span>(<span class="string">f"Completed: </span><span style="color: #f9fafb;">{completed}</span><span class="string">"</span>)
+                        </div>
+
+                        <div class="interactive-demo">
+                            <div class="demo-title">📋 Mini To-Do List</div>
+                            <input type="text" placeholder="Add a task..." id="taskInput" style="margin: 0.5rem; padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px; width: 200px;">
+                            <button class="try-button" onclick="addTask()">Add Task</button>
+                            <button class="try-button" onclick="clearTasks()" style="background: #ef4444;">Clear All</button>
+                            <div class="demo-output" id="todoDemo">Your tasks will appear here! ✅</div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-title">🧮 Project 3: Simple Calculator</div>
+                        <p><strong>What you'll learn:</strong> Functions, error handling, user interface</p>
+                        <p><strong>Description:</strong> Create a calculator that can perform basic math operations!</p>
+                        
+                        <div class="interactive-demo">
+                            <div class="demo-title">🔢 Try the Calculator</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; max-width: 300px; margin: 1rem 0;">
+                                <input type="number" placeholder="First number" id="calc1" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                                <input type="number" placeholder="Second number" id="calc2" style="padding: 0.5rem; border: 2px solid #3b82f6; border-radius: 4px;">
+                            </div>
+                            <div style="margin: 1rem 0;">
+                                <button class="try-button" onclick="calculate('+')" style="margin: 0.25rem;">+</button>
+                                <button class="try-button" onclick="calculate('-')" style="margin: 0.25rem;">-</button>
+                                <button class="try-button" onclick="calculate('*')" style="margin: 0.25rem;">×</button>
+                                <button class="try-button" onclick="calculate('/')" style="margin: 0.25rem;">÷</button>
+                            </div>
+                            <div class="demo-output" id="calculatorResult">Enter numbers and choose an operation! 🧮</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>🚀 Next Level Projects:</strong> Once you master these basics, try building a weather app, a simple website, or even a basic game with graphics!
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">🎯 Project Planning</div>
+                    <p>Which project would you like to build first? What features would you add to make it your own?</p>
+                    <select class="exercise-input" id="projectChoice">
+                        <option value="">Choose a project...</option>
+                        <option value="guessing">🎯 Number Guessing Game</option>
+                        <option value="todo">📝 To-Do List App</option>
+                        <option value="calculator">🧮 Calculator</option>
+                        <option value="custom">🎨 My own idea!</option>
+                    </select>
+                    <textarea class="exercise-input" placeholder="What features would you add to make this project uniquely yours?" id="projectFeatures" rows="3"></textarea>
+                    <button class="check-answer" onclick="saveProjectPlan()">Save My Project Plan! 📋</button>
+                    <div id="projectResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()">
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="nextPage()">
+                        Next: Career Paths →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Page 6: Next Steps & Career Paths -->
+            <div class="page" id="page6">
+                <div class="page-header">
+                    <h1 class="page-title">🎓 Next Steps & Career Paths</h1>
+                    <p class="page-subtitle">Your journey into the tech world starts here!</p>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Exciting Career Paths in Programming</h2>
+                    <p>Programming opens doors to amazing career opportunities! Here are some popular paths you can explore:</p>
+
+                    <div style="display: grid; gap: 1.5rem; margin: 2rem 0;">
+                        <div class="career-path">
+                            <div class="career-title">🌐 Web Developer</div>
+                            <p><strong>What they do:</strong> Build websites and web applications that millions of people use every day.</p>
+                            <p><strong>Skills needed:</strong> HTML, CSS, JavaScript, React, Node.js</p>
+                            <p><strong>Cool projects:</strong> Social media platforms, online stores, interactive websites</p>
+                            <div class="salary-range">💰 $50,000 - $100,000+</div>
+                        </div>
+
+                        <div class="career-path">
+                            <div class="career-title">📱 Mobile App Developer</div>
+                            <p><strong>What they do:</strong> Create apps for smartphones and tablets that people download from app stores.</p>
+                            <p><strong>Skills needed:</strong> Swift (iOS), Kotlin/Java (Android), React Native, Flutter</p>
+                            <p><strong>Cool projects:</strong> Gaming apps, productivity tools, social apps</p>
+                            <div class="salary-range">💰 $60,000 - $120,000+</div>
+                        </div>
+
+                        <div class="career-path">
+                            <div class="career-title">🤖 AI/Machine Learning Engineer</div>
+                            <p><strong>What they do:</strong> Build intelligent systems that can learn and make decisions, like recommendation algorithms and chatbots.</p>
+                            <p><strong>Skills needed:</strong> Python, TensorFlow, PyTorch, statistics, mathematics</p>
+                            <p><strong>Cool projects:</strong> Self-driving cars, voice assistants, image recognition</p>
+                            <div class="salary-range">💰 $80,000 - $150,000+</div>
+                        </div>
+
+                        <div class="career-path">
+                            <div class="career-title">🎮 Game Developer</div>
+                            <p><strong>What they do:</strong> Create video games for computers, consoles, and mobile devices.</p>
+                            <p><strong>Skills needed:</strong> C#, C++, Unity, Unreal Engine, 3D modeling</p>
+                            <p><strong>Cool projects:</strong> Indie games, AAA titles, VR experiences</p>
+                            <div class="salary-range">💰 $55,000 - $110,000+</div>
+                        </div>
+
+                        <div class="career-path">
+                            <div class="career-title">🔒 Cybersecurity Specialist</div>
+                            <p><strong>What they do:</strong> Protect companies and individuals from hackers and cyber threats.</p>
+                            <p><strong>Skills needed:</strong> Network security, ethical hacking, Python, security protocols</p>
+                            <p><strong>Cool projects:</strong> Penetration testing, security audits, threat detection systems</p>
+                            <div class="salary-range">💰 $70,000 - $130,000+</div>
+                        </div>
+
+                        <div class="career-path">
+                            <div class="career-title">📊 Data Scientist</div>
+                            <p><strong>What they do:</strong> Analyze large amounts of data to find patterns and help companies make better decisions.</p>
+                            <p><strong>Skills needed:</strong> Python, R, SQL, statistics, data visualization</p>
+                            <p><strong>Cool projects:</strong> Predicting trends, analyzing customer behavior, sports analytics</p>
+                            <div class="salary-range">💰 $75,000 - $140,000+</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Your Learning Roadmap</h2>
+                    <p>Here's a step-by-step plan to continue your programming journey:</p>
+
+                    <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-radius: 12px; padding: 2rem; margin: 2rem 0;">
+                        <div style="display: grid; gap: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: #3b82f6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+                                <div>
+                                    <strong>Master the Basics (2-3 months)</strong><br>
+                                    Complete online courses, practice daily coding challenges, build simple projects
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: #10b981; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+                                <div>
+                                    <strong>Choose Your Specialization (1-2 months)</strong><br>
+                                    Pick a career path that excites you and focus on learning those specific skills
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: #f59e0b; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+                                <div>
+                                    <strong>Build a Portfolio (3-4 months)</strong><br>
+                                    Create 3-5 impressive projects that showcase your skills to potential employers
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="background: #8b5cf6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+                                <div>
+                                    <strong>Network & Apply (Ongoing)</strong><br>
+                                    Join coding communities, attend meetups, apply for internships or entry-level positions
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Recommended Learning Resources</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                        <div class="tip-box">
+                            <div class="tip-title">📚 Free Online Courses</div>
+                            <ul>
+                                <li>Codecademy (Interactive lessons)</li>
+                                <li>freeCodeCamp (Full curriculum)</li>
+                                <li>Khan Academy (Beginner-friendly)</li>
+                                <li>Coursera (University courses)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title">💻 Practice Platforms</div>
+                            <ul>
+                                <li>HackerRank (Coding challenges)</li>
+                                <li>LeetCode (Interview prep)</li>
+                                <li>Codewars (Gamified practice)</li>
+                                <li>GitHub (Share your projects)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-box">
+                            <div class="tip-title">👥 Communities</div>
+                            <ul>
+                                <li>Stack Overflow (Q&A)</li>
+                                <li>Reddit r/programming</li>
+                                <li>Discord coding servers</li>
+                                <li>Local coding meetups</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interactive-demo">
+                    <div class="demo-title">🎯 Career Interest Quiz</div>
+                    <p>Which type of projects sound most exciting to you?</p>
+                    
+                    <div style="margin: 1rem 0;">
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="web"> 🌐 Building websites that millions visit</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="mobile"> 📱 Creating the next viral mobile app</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="ai"> 🤖 Teaching computers to think</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="games"> 🎮 Designing immersive game worlds</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="security"> 🔒 Protecting people from cyber threats</label>
+                        <label style="display: block; margin: 0.5rem 0;"><input type="radio" name="career" value="data"> 📊 Uncovering insights from data</label>
+                    </div>
+
+                    <button class="try-button" onclick="getCareerAdvice()">Get My Career Path! 🚀</button>
+                    <div class="demo-output" id="careerAdvice">Take the quiz to discover your ideal tech career! 🌟</div>
+                </div>
+
+                <div class="exercise">
+                    <div class="exercise-title">🎯 Your Action Plan</div>
+                    <p>Based on what you've learned, create your personal learning plan:</p>
+                    
+                    <div style="margin: 1rem 0;">
+                        <label style="display: block; margin: 0.5rem 0; font-weight: bold;">What's your main goal?</label>
+                        <select class="exercise-input" id="learningGoal">
+                            <option value="">Choose your goal...</option>
+                            <option value="career">🚀 Start a tech career</option>
+                            <option value="hobby">🎨 Programming as a hobby</option>
+                            <option value="business">💼 Build my own app/website</option>
+                            <option value="school">🎓 Prepare for computer science studies</option>
+                        </select>
+                    </div>
+                    
+                    <div style="margin: 1rem 0;">
+                        <label style="display: block; margin: 0.5rem 0; font-weight: bold;">How much time can you dedicate per week?</label>
+                        <select class="exercise-input" id="timeCommitment">
+                            <option value="">Choose time commitment...</option>
+                            <option value="casual">⏰ 1-3 hours (casual learning)</option>
+                            <option value="regular">📅 4-8 hours (regular practice)</option>
+                            <option value="intensive">🔥 9+ hours (intensive study)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="check-answer" onclick="createActionPlan()">Create My Action Plan! 📋</button>
+                    <div id="actionPlanResponse" style="margin-top: 1rem; font-weight: bold; color: #059669;"></div>
+                </div>
+
+                <!-- Completion Celebration -->
+                <div class="highlight-box" style="text-align: center;">
+                    <h2>🎉 Congratulations!</h2>
+                    <p>You've completed "Code Quest: A Beginner's Journey"! You now have the foundation to start your programming adventure.</p>
+                    <p><strong>Remember:</strong> Every expert was once a beginner. Keep practicing, stay curious, and don't be afraid to make mistakes – they're how we learn!</p>
+                    <button class="start-button" onclick="window.location.href="https://monitor.humbu.store/pages/store.html"" style="margin-top: 1rem;">
+                        🎓 Get Your Certificate of Completion
+                    </button>
+                </div>
+
+                <div class="social-sharing no-print">
+                    <button class="social-btn twitter-share" onclick="shareOnTwitter()">Share on Twitter</button>
+                    <button class="social-btn facebook-share" onclick="shareOnFacebook()">Share on Facebook</button>
+                    <button class="social-btn linkedin-share" onclick="shareOnLinkedIn()">Share on LinkedIn</button>
+                    <button class="social-btn whatsapp-share" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+                </div>
+
+                <div class="page-navigation">
+                    <button class="nav-button" onclick="prevPage()">
+                        ← Previous
+                    </button>
+                    <button class="nav-button" onclick="restartBook()" style="background: #10b981;">
+                        🔄 Start Over
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Enhanced JavaScript with new functionality
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-screen').style.display = 'none';
+            }, 1500);
+        });
+
+        // Your existing JavaScript variables and functions
+        let currentPageIndex = 0;
+        const totalPages = 7;
+        let secretNumber = Math.floor(Math.random() * 10) + 1;
+        let guessCount = 0;
+        let todoTasks = [];
+
+        // Initialize page
+        document.getElementById('totalPages').textContent = totalPages;
+        updateProgress();
+
+        // Load saved progress
+        loadProgress();
+
+        function updateProgress() {
+            const progress = (currentPageIndex / (totalPages - 1)) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentPage').textContent = currentPageIndex + 1;
+            
+            // Auto-save progress
+            saveProgress();
+        }
+
+        function showPage(pageIndex) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(`page${pageIndex}`).classList.add('active');
+            
+            // Update navigation
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`[data-page="${pageIndex}"]`).classList.add('active');
+            
+            currentPageIndex = pageIndex;
+            updateProgress();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Show quick navigation on larger screens
+            if (window.innerWidth > 1024) {
+                document.getElementById('quickNav').style.display = 'block';
+            }
+        }
+
+        function nextPage() {
+            if (currentPageIndex < totalPages - 1) {
+                showPage(currentPageIndex + 1);
+            }
+        }
+
+        function prevPage() {
+            if (currentPageIndex > 0) {
+                showPage(currentPageIndex - 1);
+            }
+        }
+
+        function restartBook() {
+            showPage(0);
+        }
+
+        // Navigation tab clicks
+        document.getElementById('navTabs').addEventListener('click', (e) => {
+            if (e.target.classList.contains('nav-tab')) {
+                const pageIndex = parseInt(e.target.dataset.page);
+                showPage(pageIndex);
+            }
+        });
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode);
+            showToast(isDarkMode ? 'Dark mode enabled' : 'Light mode enabled');
+        }
+
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Table of Contents Toggle
+        function toggleTOC() {
+            const toc = document.getElementById('tocSidebar');
+            toc.style.display = toc.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Bookmark/Save Progress
+        function saveBookmark() {
+            saveProgress();
+            showSaveIndicator();
+        }
+
+        function saveProgress() {
+            const progress = {
+                currentPage: currentPageIndex,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('codeQuestProgress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('codeQuestProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                showPage(progress.currentPage);
+            }
+        }
+
+        function showSaveIndicator() {
+            const indicator = document.getElementById('saveIndicator');
+            indicator.style.display = 'block';
+            setTimeout(() => {
+                indicator.style.display = 'none';
+            }, 2000);
+        }
+
+        // Search Functionality
+        function openSearch() {
+            document.getElementById('searchModal').style.display = 'flex';
+            document.getElementById('searchInput').focus();
+        }
+
+        function closeSearch() {
+            document.getElementById('searchModal').style.display = 'none';
+        }
+
+        // Simple search implementation
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const results = document.getElementById('searchResults');
+            
+            if (query.length < 2) {
+                results.innerHTML = '<p>Type at least 2 characters to search</p>';
+                return;
+            }
+            
+            // Simple content search - in a real app, you'd have a more comprehensive index
+            const searchableContent = [
+                { page: 1, title: 'Introduction to Programming', content: 'Programming is like learning a new language' },
+                { page: 2, title: 'What is Coding?', content: 'Coding is creating instructions for computers' },
+                { page: 3, title: 'Choosing Your Language', content: 'Python, JavaScript, Scratch, Java' },
+                { page: 4, title: 'Basic Concepts', content: 'Variables, Functions, Loops, Conditionals' },
+                { page: 5, title: 'Hands-on Projects', content: 'Number Guessing Game, To-Do List, Calculator' },
+                { page: 6, title: 'Career Paths', content: 'Web Developer, Mobile App Developer, Data Scientist' }
+            ];
+            
+            const matches = searchableContent.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+            
+            if (matches.length > 0) {
+                results.innerHTML = matches.map(item => `
+                    <div style="padding: 10px; border-bottom: 1px solid #e2e8f0; cursor: pointer;" 
+                         onclick="showPage(${item.page}); closeSearch();">
+                        <strong>${item.title}</strong><br>
+                        <small>${item.content.substring(0, 100)}...</small>
+                    </div>
+                `).join('');
+            } else {
+                results.innerHTML = '<p>No results found. Try different keywords.</p>';
+            }
+        });
+
+        // Print Functionality
+        function printBook() {
+            window.print();
+        }
+
+        function printCertificate() {
+            // Create a print-friendly version of the certificate
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>Certificate of Completion</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+                            .certificate { border: 15px solid #f59e0b; padding: 40px; max-width: 800px; margin: 0 auto; }
+                            h1 { color: #1e40af; }
+                            h2 { color: #059669; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="certificate">
+                            <h1>🎓 Certificate of Completion</h1>
+                            <p>This certifies that</p>
+                            <h2>${document.getElementById('certificateName').textContent}</h2>
+                            <p>has successfully completed</p>
+                            <h3>Code Quest: A Beginner's Programming Journey</h3>
+                            <p>Presented by</p>
+                            <p><strong>Humbu Wandeme Trading Enterprise</strong></p>
+                            <p>${new Date().toLocaleDateString()}</p>
+                        </div>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Certificate of Completion
+        function window.location.href="https://monitor.humbu.store/pages/store.html" {
+            const name = prompt('Enter your name for the certificate:');
+            if (name) {
+                document.getElementById('certificateName').textContent = name;
+                document.getElementById('certificateDate').textContent = new Date().toLocaleDateString();
+                document.getElementById('certificate').style.display = 'block';
+            }
+        }
+
+        function closeCertificate() {
+            document.getElementById('certificate').style.display = 'none';
+        }
+
+        // Toast Notifications
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Social Sharing
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("I'm learning programming with Code Quest! Check out this amazing interactive book.");
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent(window.location.href);
+            const title = encodeURIComponent("Code Quest: A Beginner's Programming Journey");
+            const summary = encodeURIComponent("Interactive programming book for beginners");
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const text = encodeURIComponent("Check out this interactive programming book: " + window.location.href);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // Contact Form
+        function submitContactForm() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (!name || !email || !message) {
+                document.getElementById('contactResponse').innerHTML = 
+                    '<p style="color: #dc2626;">Please fill in all fields.</p>';
+                return;
+            }
+            
+            // In a real application, you would send this data to a server
+            // For now, we'll just show a success message
+            document.getElementById('contactResponse').innerHTML = 
+                '<p style="color: #059669;">Thank you for your message! We\'ll get back to you soon.</p>';
+            
+            // Clear form
+            document.getElementById('contactName').value = '';
+            document.getElementById('contactEmail').value = '';
+            document.getElementById('contactMessage').value = '';
+            
+            showToast('Message sent successfully!');
+        }
+
+        // Responsive quick navigation
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 1024) {
+                document.getElementById('quickNav').style.display = 'none';
+            } else if (currentPageIndex > 0) {
+                document.getElementById('quickNav').style.display = 'block';
+            }
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.id === 'searchModal') {
+                closeSearch();
+            }
+            if (e.target.id === 'certificate') {
+                closeCertificate();
+            }
+        });
+
+        // Your existing interactive functions remain unchanged
+        // [ALL YOUR EXISTING JAVASCRIPT CODE REMAINS UNCHANGED]
+        function runFirstDemo() {
+            const messages = [
+                "🎉 Hello, future programmer!",
+                "✨ You just ran your first code!",
+                "🚀 This is the beginning of something amazing!",
+                "💡 Programming is like magic - you tell the computer what to do!"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('firstDemo').innerHTML = randomMessage;
+        }
+
+        function saveDreamProject() {
+            const dream = document.getElementById('dreamProject').value;
+            if (dream.trim()) {
+                document.getElementById('dreamResponse').innerHTML = 
+                    `🌟 Amazing! "${dream}" sounds like an incredible project. Keep that dream in mind as you learn - you'll be able to build it sooner than you think!`;
+            } else {
+                document.getElementById('dreamResponse').innerHTML = 
+                    `💭 Take a moment to think about what you'd love to create. Having a goal makes learning more exciting!`;
+            }
+        }
+
+        function runCalculatorDemo() {
+            const age = document.getElementById('ageInput').value;
+            if (age && age > 0) {
+                const days = age * 365;
+                const hours = days * 24;
+                document.getElementById('calculatorDemo').innerHTML = 
+                    `🎂 Wow! You've been alive for approximately:<br>
+                     📅 ${days.toLocaleString()} days<br>
+                     ⏰ ${hours.toLocaleString()} hours<br>
+                     <em>This is what programming can do - solve problems with math!</em>`;
+            } else {
+                document.getElementById('calculatorDemo').innerHTML = 
+                    `Please enter a valid age to see the calculation! 🔢`;
+            }
+        }
+
+        function checkMotivation() {
+            const selected = document.querySelector('input[name="reason"]:checked');
+            if (selected) {
+                const responses = {
+                    career: "💼 Excellent choice! The tech industry offers amazing opportunities and job security.",
+                    creativity: "🎨 Perfect! Programming is one of the most creative fields - you're building digital art!",
+                    problem: "🧩 Great mindset! Problem-solving is at the heart of programming. You'll love the challenges!",
+                    world: "🌟 Inspiring! Many programmers have changed the world. You could be next!"
+                };
+                document.getElementById('motivationResponse').innerHTML = responses[selected.value];
+            } else {
+                document.getElementById('motivationResponse').innerHTML = 
+                    `Please select what motivates you most! 🤔`;
+            }
+        }
+
+        function selectLanguage(language) {
+            const cards = document.querySelectorAll('.language-card');
+            cards.forEach(card => card.style.borderColor = '#e2e8f0');
+            event.target.closest('.language-card').style.borderColor = '#3b82f6';
+        }
+
+        function getLanguageRecommendation() {
+            const interest = document.querySelector('input[name="interest"]:checked');
+            const learning = document.querySelector('input[name="learning"]:checked');
+            
+            if (!interest || !learning) {
+                document.getElementById('languageRecommendation').innerHTML = 
+                    `Please answer both questions to get your recommendation! 📝`;
+                return;
+            }
+
+            let recommendation = "";
+            
+            if (interest.value === 'web') {
+                recommendation = "🌐 <strong>JavaScript</strong> is perfect for you! It's the language of the web and you'll see results immediately in your browser.";
+            } else if (interest.value === 'data') {
+                recommendation = "🐍 <strong>Python</strong> is your best bet! It's the most popular language for data science and AI.";
+            } else if (interest.value === 'games') {
+                if (learning.value === 'visual') {
+                    recommendation = "🧩 Start with <strong>Scratch</strong> to learn game logic, then move to <strong>C#</strong> with Unity!";
+                } else {
+                    recommendation = "🎮 <strong>C#</strong> with Unity is perfect for game development!";
+                }
+            } else if (interest.value === 'mobile') {
+                recommendation = "📱 <strong>JavaScript</strong> with React Native lets you build apps for both iPhone and Android!";
+            }
+
+            if (learning.value === 'visual' && interest.value !== 'games') {
+                recommendation += " But since you prefer visual learning, consider starting with <strong>Scratch</strong> first!";
+            }
+
+            document.getElementById('languageRecommendation').innerHTML = recommendation;
+        }
+
+        function confirmLanguageChoice() {
+            const choice = document.getElementById('chosenLanguage').value;
+            if (choice) {
+                const responses = {
+                    python: "🐍 Excellent choice! Python is perfect for beginners and incredibly powerful.",
+                    javascript: "🌐 Great pick! JavaScript will let you build interactive websites right away.",
+                    scratch: "🧩 Smart start! Scratch will teach you programming logic without syntax worries.",
+                    java: "☕ Solid choice! Java is widely used and will teach you good programming habits.",
+                    other: "🔍 That's okay! Take your time exploring. The most important thing is to start coding!"
+                };
+                document.getElementById('languageResponse').innerHTML = responses[choice];
+            } else {
+                document.getElementById('languageResponse').innerHTML = 
+                    `Please select a language to get started! 🎯`;
+            }
+        }
+
+        function createVariables() {
+            const name = document.getElementById('varName').value;
+            const age = document.getElementById('varAge').value;
+            
+            if (name && age) {
+                document.getElementById('variableDemo').innerHTML = 
+                    `<strong>Your Variables:</strong><br>
+                     name = "${name}"<br>
+                     age = ${age}<br>
+                     <br>
+                     <strong>Using them:</strong><br>
+                     "Hello, ${name}! You are ${age} years old."<br>
+                     <em>See how variables store and reuse information? 📦</em>`;
+            } else {
+                document.getElementById('variableDemo').innerHTML = 
+                    `Please enter both your name and age! 📝`;
+            }
+        }
+
+        function runGreetingFunction() {
+            const name = document.getElementById('functionName').value;
+            if (name.trim()) {
+                document.getElementById('functionDemo').innerHTML = 
+                    `<strong>Function Output:</strong><br>
+                     "Hello, ${name}! Welcome to coding!"<br>
+                     <br>
+                     <em>Functions let you reuse code! You could call greet_person("${name}") anywhere in your program. 🔄</em>`;
+            } else {
+                document.getElementById('functionDemo').innerHTML = 
+                    `Please enter a name to greet! 👋`;
+            }
+        }
+
+        function runCountdownLoop() {
+            let countdown = 5;
+            const demo = document.getElementById('loopDemo');
+            demo.innerHTML = "Starting countdown...<br>";
+            
+            const interval = setInterval(() => {
+                demo.innerHTML += `${countdown}<br>`;
+                countdown--;
+                
+                if (countdown < 0) {
+                    demo.innerHTML += "🚀 Blast off!<br><em>This loop ran 6 times automatically!</em>";
+                    clearInterval(interval);
+                }
+            }, 800);
+        }
+
+        function getWeatherAdvice() {
+            const temp = document.getElementById('tempInput').value;
+            if (temp) {
+                let advice = "";
+                if (temp > 80) {
+                    advice = "🌞 It's hot! Wear shorts and stay hydrated.";
+                } else if (temp > 60) {
+                    advice = "🌤️ Nice weather! Perfect for a walk.";
+                } else {
+                    advice = "🧥 It's cold! Bring a jacket.";
+                }
+                
+                document.getElementById('weatherDemo').innerHTML = 
+                    `<strong>Temperature: ${temp}°F</strong><br>
+                     ${advice}<br>
+                     <em>The program made a decision based on your input! 🤔</em>`;
+            } else {
+                document.getElementById('weatherDemo').innerHTML = 
+                    `Please enter a temperature! 🌡️`;
+            }
+        }
+
+        function checkConceptMatch() {
+            const match1 = document.getElementById('conceptMatch1').value;
+            const match2 = document.getElementById('conceptMatch2').value;
+            
+            if (match1 === 'correct' && match2 === 'correct') {
+                document.getElementById('conceptResponse').innerHTML = 
+                    `🎉 Perfect! You understand the basic concepts!`;
+                document.getElementById('conceptResponse').style.color = '#059669';
+            } else {
+                document.getElementById('conceptResponse').innerHTML = 
+                    `🤔 Not quite right. Review the concepts above and try again!`;
+                document.getElementById('conceptResponse').style.color = '#dc2626';
+            }
+        }
+
+        function playGuessingGame() {
+            const guess = parseInt(document.getElementById('guessInput').value);
+            guessCount++;
+            
+            if (guess === secretNumber) {
+                document.getElementById('guessingGame').innerHTML = 
+                    `🎉 Congratulations! You guessed ${secretNumber} in ${guessCount} tries!<br>
+                     <em>Want to play again? I'm thinking of a new number!</em>`;
+                secretNumber = Math.floor(Math.random() * 10) + 1;
+                guessCount = 0;
+            } else if (guess < secretNumber) {
+                document.getElementById('guessingGame').innerHTML = 
+                    `📈 Too low! Try a higher number. (Attempt ${guessCount})`;
+            } else if (guess > secretNumber) {
+                document.getElementById('guessingGame').innerHTML = 
+                    `📉 Too high! Try a lower number. (Attempt ${guessCount})`;
+            } else {
+                document.getElementById('guessingGame').innerHTML = 
+                    `Please enter a number between 1 and 10! 🔢`;
+            }
+        }
+
+        function addTask() {
+            const task = document.getElementById('taskInput').value.trim();
+            if (task) {
+                todoTasks.push(task);
+                document.getElementById('taskInput').value = '';
+                updateTodoDisplay();
+            }
+        }
+
+        function clearTasks() {
+            todoTasks = [];
+            updateTodoDisplay();
+        }
+
+        function updateTodoDisplay() {
+            const demo = document.getElementById('todoDemo');
+            if (todoTasks.length === 0) {
+                demo.innerHTML = "Your task list is empty. Add some tasks! ✅";
+            } else {
+                let html = "<strong>Your Tasks:</strong><br>";
+                todoTasks.forEach((task, index) => {
+                    html += `${index + 1}. ${task}<br>`;
+                });
+                html += `<em>You have ${todoTasks.length} task(s) to complete!</em>`;
+                demo.innerHTML = html;
+            }
+        }
+
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('calc1').value);
+            const num2 = parseFloat(document.getElementById('calc2').value);
+            
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('calculatorResult').innerHTML = 
+                    `Please enter valid numbers! 🔢`;
+                return;
+            }
+            
+            let result;
+            let symbol;
+            
+            switch(operation) {
+                case '+':
+                    result = num1 + num2;
+                    symbol = '+';
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    symbol = '-';
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    symbol = '×';
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        document.getElementById('calculatorResult').innerHTML = 
+                            `❌ Cannot divide by zero!`;
+                        return;
+                    }
+                    result = num1 / num2;
+                    symbol = '÷';
+                    break;
+            }
+            
+            document.getElementById('calculatorResult').innerHTML = 
+                `<strong>${num1} ${symbol} ${num2} = ${result}</strong><br>
+                 <em>Math made easy with programming! 🧮</em>`;
+        }
+
+        function saveProjectPlan() {
+            const project = document.getElementById('projectChoice').value;
+            const features = document.getElementById('projectFeatures').value.trim();
+            
+            if (project) {
+                const projectNames = {
+                    guessing: "Number Guessing Game",
+                    todo: "To-Do List App", 
+                    calculator: "Calculator",
+                    custom: "Your Custom Project"
+                };
+                
+                let response = `🎯 Great choice! ${projectNames[project]} will be an excellent first project.`;
+                
+                if (features) {
+                    response += ` Your ideas for custom features: "${features}" show real creativity! 🌟`;
+                }
+                
+                response += ` Start building and don't be afraid to experiment!`;
+                
+                document.getElementById('projectResponse').innerHTML = response;
+            } else {
+                document.getElementById('projectResponse').innerHTML = 
+                    `Please select a project to get started! 🎯`;
+            }
+        }
+
+        function getCareerAdvice() {
+            const career = document.querySelector('input[name="career"]:checked');
+            
+            if (!career) {
+                document.getElementById('careerAdvice').innerHTML = 
+                    `Please select what interests you most! 🤔`;
+                return;
+            }
+            
+            const advice = {
+                web: "🌐 <strong>Web Development</strong> is perfect for you! Start with HTML, CSS, and JavaScript. You'll be building websites in no time!",
+                mobile: "📱 <strong>Mobile App Development</strong> awaits! Learn JavaScript with React Native or try Flutter. Your apps could be the next big thing!",
+                ai: "🤖 <strong>AI/Machine Learning</strong> is your calling! Start with Python and math fundamentals. You'll be teaching computers to think!",
+                games: "🎮 <strong>Game Development</strong> is your path! Learn C# with Unity or try Unreal Engine. Create the games you've always dreamed of!",
+                security: "🔒 <strong>Cybersecurity</strong> needs you! Learn networking, Python, and ethical hacking. Become a digital guardian!",
+                data: "📊 <strong>Data Science</strong> is ideal for you! Master Python, statistics, and data visualization. Uncover insights that change the world!"
+            };
+            
+            document.getElementById('careerAdvice').innerHTML = advice[career.value];
+        }
+
+        function createActionPlan() {
+            const goal = document.getElementById('learningGoal').value;
+            const time = document.getElementById('timeCommitment').value;
+            
+            if (!goal || !time) {
+                document.getElementById('actionPlanResponse').innerHTML = 
+                    `Please fill in both fields to create your plan! 📋`;
+                return;
+            }
+            
+            const goals = {
+                career: "launching your tech career",
+                hobby: "enjoying programming as a creative hobby",
+                business: "building your own digital products",
+                school: "excelling in computer science studies"
+            };
+            
+            const timeframes = {
+                casual: "With 1-3 hours per week, focus on one concept at a time. You'll make steady progress!",
+                regular: "With 4-8 hours per week, you can complete most online courses in 2-3 months.",
+                intensive: "With 9+ hours per week, you could be job-ready in 6-12 months with dedicated practice!"
+            };
+            
+            document.getElementById('actionPlanResponse').innerHTML = 
+                `🎯 <strong>Your Personal Action Plan:</strong><br>
+                 <strong>Goal:</strong> ${goals[goal]}<br>
+                 <strong>Timeline:</strong> ${timeframes[time]}<br>
+                 <br>
+                 🚀 <strong>Next Steps:</strong><br>
+                 1. Choose your first programming language<br>
+                 2. Find a beginner course or tutorial<br>
+                 3. Code for at least 15 minutes daily<br>
+                 4. Build your first project within 30 days<br>
+                 <br>
+                 You've got this! Every expert was once a beginner. 🌟`;
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98fecc7017834ed4',t:'MTc2MDY5MzY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+                            </html>
