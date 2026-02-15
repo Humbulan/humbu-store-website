@@ -10,6 +10,13 @@
         .port-dot { background: #1a2635; border: 1px solid #3a5070; border-radius: 5px; padding: 5px; font-size: 0.7rem; color: #00ff88; font-family: monospace; text-align: center; }
         .live-indicator { color: #ff4444; font-weight: bold; animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0.3; } }
+        
+        /* New Fleet Styles */
+        .vehicle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 25px; }
+        .vehicle-card { background: #111a26; border: 1px solid #2d3a5e; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; }
+        .vehicle-card:hover { border-color: #00ff88; transform: translateY(-3px); }
+        .vehicle-id { font-family: monospace; color: #8dd0ff; font-weight: bold; margin-bottom: 5px; }
+        .v-stats { font-size: 1.1rem; color: #ffaa88; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -37,17 +44,14 @@
         <div class="container">
             <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
                 <div style="flex: 1; min-width: 300px;">
-                    <img src="humbulani-founder-photo.jpg" alt="Humbulani Mudau - Founder"
-                         style="width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                    <img src="humbulani-founder-photo.jpg" alt="Humbulani Mudau" style="width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                 </div>
                 <div style="flex: 2; min-width: 300px;">
                     <span class="live-indicator">● LIVE COMMAND CENTER</span>
                     <h1>Humbulani Mudau</h1>
-                    <p style="font-size: 1.1rem; color: var(--secondary); font-family: monospace;">🏛️ CIPC: 2026/1730663/07 | SADC #ZA-001</p>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem; margin-top: 1rem;">
-                        Lead Developer of the <strong>Imperial Omega Stack</strong>. Managing 17 vehicles and 33 active ports across 43 villages in South Africa.
-                    </p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <p style="font-family: monospace; color: var(--secondary);">🏛️ CIPC: 2026/1730663/07 | SADC #ZA-001</p>
+                    <p style="margin: 1.5rem 0;">Lead Developer of the <strong>Imperial Omega Stack</strong>. Infrastructure for 43 villages.</p>
+                    <div style="display: flex; gap: 1rem;">
                         <a href="pages/contact.html" class="btn">Start Your Project</a>
                         <a href="pages/services.html" class="btn" style="background: var(--accent); color: var(--dark);">View Services</a>
                     </div>
@@ -56,68 +60,44 @@
         </div>
     </section>
 
+    <section class="section" style="background: #070b14; color: white;">
+        <div class="container">
+            <h2 style="text-align: center;">🚚 Imperial Fleet Network</h2>
+            <p style="text-align: center; color: #a0b5d0;">Real-time telemetry from 17 mobile nodes across Limpopo</p>
+            
+            <div class="vehicle-grid" id="vehicleGrid">
+                </div>
+        </div>
+    </section>
+
     <section class="section" style="background: #0a0f1e; color: white; border-top: 1px solid #2d3a5e;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
-                <div>
-                    <h3 style="font-size: 2.5rem; color: #00ff88;">17</h3>
-                    <p>Active Vehicles</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: #00ff88;">43</h3>
-                    <p>Villages Covered</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: #00ff88;">33</h3>
-                    <p>Active Ports</p>
-                </div>
-                <div>
-                    <h3 style="font-size: 2.5rem; color: #ffd966;">B-BBEE 1</h3>
-                    <p>Level 1 Contributor</p>
-                </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center;">
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">17</h3><p>Vehicles</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">43</h3><p>Villages</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">33</h3><p>Ports</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #ffd966;">B-BBEE 1</h3><p>Level 1</p></div>
             </div>
-
-            <div class="port-mini-grid" id="portVisualizer">
-                </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Imperial Stack Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>AI & Machine Learning</h3>
-                    <p>Port 11434: Containerized AI models and intelligent automation solutions.</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R5,000/month</p>
-                </div>
-                <div class="service-card">
-                    <h3>Cloud Infrastructure</h3>
-                    <p>Urban Gateway (Port 8102) and scalable SADC trade node architecture.</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R8,000/project</p>
-                </div>
-                <div class="service-card">
-                    <h3>Web Development</h3>
-                    <p>Full-stack B2B Hubs (Port 8099) and custom business software.</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R3,500</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 2rem;">Built from Scratch Expertise</h2>
-            <div style="text-align: center;">
-                <img src="code-proof-dns-http.jpg" alt="Code Proof" style="max-width: 100%; border-radius: 10px;">
-                <p style="margin-top: 1rem; font-style: italic;">
-                    Proven expertise: Building DNS, HTTP, and SQLite from the ground up.
-                </p>
-            </div>
+            <div class="port-mini-grid" id="portVisualizer"></div>
         </div>
     </section>
 
     <script>
+        // Inject 17 Vehicles
+        const vGrid = document.getElementById('vehicleGrid');
+        const villages = ['Maniini', 'Sibasa', 'Makhado', 'Thohoyandou', 'Malamulele'];
+        for(let i=1; i<=17; i++) {
+            const v = document.createElement('div');
+            v.className = 'vehicle-card';
+            const temp = (26 + Math.random() * 8).toFixed(1);
+            const loc = villages[Math.floor(Math.random()*villages.length)];
+            v.innerHTML = `<div class="vehicle-id">HMB-FLEET-${i.toString().padStart(2,'0')}</div>
+                           <div class="v-stats">${temp}°C</div>
+                           <div style="font-size: 0.8rem; color: #8a9db0;">📍 ${loc}</div>`;
+            vGrid.appendChild(v);
+        }
+
+        // Inject 33 Ports
         const ports = [1880, 8000, 8080, 8082, 8088, 8083, 8081, 8085, 8086, 8087, 8191, 8090, 8092, 8094, 8095, 8099, 8100, 8101, 8102, 8103, 8104, 8105, 8888, 8889, 11434, 8096, 9090, 8110, 8111, 8112, 8113, 8114, 8115];
         const visualizer = document.getElementById('portVisualizer');
         ports.forEach(p => {
