@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Humbu Wandeme Digital</title>
+    <title>Imperial Services - Humbu Wandeme Digital</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .port-label { background: #0a1f1a; color: #00ff88; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; border: 1px solid #00ff88; display: inline-block; margin-bottom: 10px; }
+        .price-tag { color: var(--secondary); font-weight: bold; display: block; margin-top: 10px; }
+        .cipc-footer { background: #001f3f; color: white; padding: 40px 0; text-align: center; margin-top: 50px; border-top: 3px solid #ffd966; }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -17,19 +22,20 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-<li><a href="programming-book.html">Learn Coding</a></li>
-<li><a href="payment-portal.html">Payments</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Payments</a></li>
-<li><a href="programming-book.html">Learn Coding</a></li>
-<li><a href="dashboard.html" class="btn">Client Portal</a></li>
+                <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                <li class="nav-item"><a href="store.html" class="nav-link">Store</a></li>
+                <li class="nav-item"><a href="partnerships.html" class="nav-link">Partnerships</a></li>
+                <li class="nav-item"><a href="programming-book.html" class="nav-link">Learn Coding</a></li>
+                <li class="nav-item"><a href="payment-portal.html" class="nav-link">Payments</a></li>
+                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" style="background: linear-gradient(rgba(0,31,63,0.9), rgba(0,31,63,0.9)), url('../hero-bg.jpg');">
         <div class="container">
-            <h1>Our Comprehensive Services</h1>
-            <p>End-to-end digital solutions for modern businesses</p>
+            <h1>Imperial Stack Services</h1>
+            <p>High-Availability Infrastructure & Business Intelligence</p>
         </div>
     </section>
 
@@ -37,38 +43,57 @@
         <div class="container">
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>AI Containerization</h3>
-                    <p>Docker & Kubernetes deployment for machine learning models</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R5,000/month</p>
+                    <span class="port-label">PORT 11434</span>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Deployment of containerized Ollama models and intelligent ML pipelines.</p>
+                    <span class="price-tag">From R5,000/month</span>
                 </div>
+
                 <div class="service-card">
-                    <h3>Cloud Migration</h3>
-                    <p>Move your infrastructure to secure South African cloud regions</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R8,000/project</p>
+                    <span class="port-label">PORT 8102</span>
+                    <h3>Imperial Cloud Gateway</h3>
+                    <p>Secure migration to SADC trade nodes with container orchestration.</p>
+                    <span class="price-tag">From R8,000/project</span>
                 </div>
+
                 <div class="service-card">
-                    <h3>Web Development</h3>
-                    <p>Custom websites, e-commerce, and business applications</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R3,500</p>
-                </div>
-                <div class="service-card">
+                    <span class="port-label">PORT 1880</span>
                     <h3>Business Automation</h3>
-                    <p>Streamline operations with custom software solutions</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R6,000</p>
+                    <p>Node-RED workflows and custom logic for fleet and revenue tracking.</p>
+                    <span class="price-tag">From R6,000</span>
                 </div>
-                <div class="service-card">
-                    <h3>IT Consulting</h3>
-                    <p>Strategic technology planning and implementation</p>
-                    <p style="color: var(--secondary); font-weight: bold;">R800/hour</p>
+
+                <div class="service-card" style="border: 2px solid #ff4444;">
+                    <span class="port-label">PORT 8082</span>
+                    <h3>Imperial Collector</h3>
+                    <p>Automated debt recovery via SMS & Yoco integration. 78% success rate.</p>
+                    <span class="price-tag">R1,500/month</span>
                 </div>
+
                 <div class="service-card">
-                    <h3>24/7 Support</h3>
-                    <p>Ongoing maintenance and technical support</p>
-                    <p style="color: var(--secondary); font-weight: bold;">From R2,000/month</p>
+                    <span class="port-label">PORT 8087</span>
+                    <h3>Company Compliance</h3>
+                    <p>Full CIPC registration, SARS Tax PIN, and Yoco Merchant setup.</p>
+                    <span class="price-tag">R175 (Once-off)</span>
+                </div>
+
+                <div class="service-card">
+                    <span class="port-label">PORT 8099</span>
+                    <h3>Enterprise Web Dev</h3>
+                    <p>Full-stack B2B portals and custom business applications.</p>
+                    <span class="price-tag">From R3,500</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer class="cipc-footer">
+        <div class="container">
+            <h2 style="color: #ffd966;">🏛️ HUMBU WANDEME TRADING (PTY) LTD</h2>
+            <p>CIPC: 2026/1730663/07 | B-BBEE Level 1 Contributor</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">© 2026 Imperial Omega Stack</p>
+        </div>
+    </footer>
 
     <script src="../js/main.js"></script>
 </body>
