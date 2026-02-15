@@ -9,6 +9,8 @@
         .port-label { background: #0a1f1a; color: #00ff88; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; border: 1px solid #00ff88; display: inline-block; margin-bottom: 10px; }
         .price-tag { color: var(--secondary); font-weight: bold; display: block; margin-top: 10px; }
         .cipc-footer { background: #001f3f; color: white; padding: 40px 0; text-align: center; margin-top: 50px; border-top: 3px solid #ffd966; }
+        .service-card { border: 1px solid #eee; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #00ff88; }
     </style>
 </head>
 <body>
@@ -32,12 +34,12 @@
         </div>
     </nav>
 
-    <section class="hero" style="background: linear-gradient(rgba(0,31,63,0.9), rgba(0,31,63,0.9)), url('../hero-bg.jpg');">
+    <header class="hero" style="background: #001f3f; color: white; padding: 80px 0; text-align: center;">
         <div class="container">
             <h1>Imperial Stack Services</h1>
-            <p>High-Availability Infrastructure & Business Intelligence</p>
+            <p>Infrastructure for the SADC Trade Corridor</p>
         </div>
-    </section>
+    </header>
 
     <section class="section">
         <div class="container">
@@ -45,42 +47,42 @@
                 <div class="service-card">
                     <span class="port-label">PORT 11434</span>
                     <h3>AI & Machine Learning</h3>
-                    <p>Deployment of containerized Ollama models and intelligent ML pipelines.</p>
+                    <p>Docker & Kubernetes deployment for Ollama models and ML pipelines.</p>
                     <span class="price-tag">From R5,000/month</span>
                 </div>
 
                 <div class="service-card">
                     <span class="port-label">PORT 8102</span>
-                    <h3>Imperial Cloud Gateway</h3>
-                    <p>Secure migration to SADC trade nodes with container orchestration.</p>
+                    <h3>Cloud Migration</h3>
+                    <p>Move infrastructure to secure Urban Gateway regions with port mirroring.</p>
                     <span class="price-tag">From R8,000/project</span>
                 </div>
 
-                <div class="service-card">
-                    <span class="port-label">PORT 1880</span>
-                    <h3>Business Automation</h3>
-                    <p>Node-RED workflows and custom logic for fleet and revenue tracking.</p>
-                    <span class="price-tag">From R6,000</span>
-                </div>
-
-                <div class="service-card" style="border: 2px solid #ff4444;">
+                <div class="service-card" style="border-left: 5px solid #ff4444;">
                     <span class="port-label">PORT 8082</span>
                     <h3>Imperial Collector</h3>
-                    <p>Automated debt recovery via SMS & Yoco integration. 78% success rate.</p>
+                    <p>Automated debt recovery via SMS & Yoco. 78% success rate (72h).</p>
                     <span class="price-tag">R1,500/month</span>
                 </div>
 
                 <div class="service-card">
+                    <span class="port-label">PORT 1880</span>
+                    <h3>Node-RED Automation</h3>
+                    <p>Streamline operations with custom software and hardware logic.</p>
+                    <span class="price-tag">From R6,000</span>
+                </div>
+
+                <div class="service-card">
                     <span class="port-label">PORT 8087</span>
-                    <h3>Company Compliance</h3>
-                    <p>Full CIPC registration, SARS Tax PIN, and Yoco Merchant setup.</p>
+                    <h3>Business Compliance</h3>
+                    <p>Company Name Reservation, CIPC, SARS, and Yoco account setup.</p>
                     <span class="price-tag">R175 (Once-off)</span>
                 </div>
 
                 <div class="service-card">
                     <span class="port-label">PORT 8099</span>
                     <h3>Enterprise Web Dev</h3>
-                    <p>Full-stack B2B portals and custom business applications.</p>
+                    <p>Custom B2B Hubs, e-commerce, and command center dashboards.</p>
                     <span class="price-tag">From R3,500</span>
                 </div>
             </div>
