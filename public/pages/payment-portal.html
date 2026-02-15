@@ -46,3 +46,21 @@
     </div>
 </body>
 </html>
+
+<script>
+    // Imperial Parameter Capture Logic
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get('product');
+    const amountInCents = urlParams.get('amount');
+
+    if (product && amountInCents) {
+        const amountInRands = (amountInCents / 100).toFixed(2);
+        document.getElementById('product-name').innerText = product.replace(/-/g, ' ').toUpperCase();
+        document.getElementById('total-amount').innerText = 'R ' + amountInRands;
+        
+        // Update Yoco Amount (assuming your Yoco instance is named 'yoco')
+        if (typeof yoco !== 'undefined') {
+            yoco.amountInCents = amountInCents;
+        }
+    }
+</script>
