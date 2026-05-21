@@ -3,99 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imperial Services - Humbu Wandeme Digital</title>
+    <title>Imperial Services – Humbu Wandeme Trading Enterprise</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .port-label { background: #0a1f1a; color: #00ff88; padding: 2px 8px; border-radius: 4px; font-family: monospace; font-size: 0.75rem; border: 1px solid #00ff88; display: inline-block; margin-bottom: 10px; }
-        .price-tag { color: var(--secondary); font-weight: bold; display: block; margin-top: 10px; }
-        .cipc-footer { background: #001f3f; color: white; padding: 40px 0; text-align: center; margin-top: 50px; border-top: 3px solid #ffd966; }
-        .service-card { border: 1px solid #eee; transition: 0.3s; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-color: #00ff88; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0a0f1e; color: #e0e5f0; line-height: 1.5; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        .navbar { background: #0f172a; border-bottom: 1px solid #2d3a5e; padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-size: 1.5rem; font-weight: bold; background: linear-gradient(135deg, #fff, #8f8, #acf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-link { color: #cbd5e1; text-decoration: none; transition: 0.2s; }
+        .nav-link:hover { color: #00ff88; }
+        .hero { background: linear-gradient(135deg, #001a2f, #00102a); padding: 80px 0; text-align: center; border-bottom: 3px solid #ffd966; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .badge { display: inline-block; background: #00ff8820; border: 1px solid #00ff88; color: #00ff88; padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 4rem 0; }
+        .service-card { background: #111a26; border: 1px solid #2a3a50; border-radius: 1.5rem; padding: 2rem; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-8px); border-color: #00ff88; box-shadow: 0 20px 35px -15px rgba(0,255,136,0.2); }
+        .port-badge { background: #0a1f1a; color: #00ff88; font-family: monospace; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-bottom: 1rem; border: 1px solid #00ff88; }
+        h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #ffd966; }
+        .price { font-size: 1.5rem; font-weight: bold; color: #00ff88; margin: 1rem 0 0.5rem; }
+        .btn { background: #00a86b; color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 40px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: 0.2s; }
+        .btn:hover { background: #008855; transform: scale(1.02); }
+        .footer { background: #001f3f; color: #ccc; text-align: center; padding: 3rem 0; margin-top: 4rem; border-top: 3px solid #ffd966; }
+        @media (max-width: 768px) { .nav-menu { display: none; } .hero h1 { font-size: 2rem; } }
     </style>
-<style>.button-section { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }</style></head>
+</head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Humbu Wandeme Digital</div>
+            <div class="logo">🏛️ HUMBU WANDEME</div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="../dashboard.html" class="nav-link">Command Center</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                <li class="nav-item"><a href="../Programming-language/index.html" class="nav-link">Learn Coding</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Payments</a></li>
-                <li class="nav-item"><a href="Programming-language/index.html" class="nav-link">Learn Coding</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <header class="hero" style="background: #001f3f; color: white; padding: 80px 0; text-align: center;">
+    <header class="hero">
         <div class="container">
+            <div class="badge">🇿🇦 #1 RANKED SECURITY FIRM – SAPPHIRE LEAGUE</div>
             <h1>Imperial Stack Services</h1>
-            <p>Infrastructure for the SADC Trade Corridor</p>
+            <p style="font-size: 1.2rem; color: #a0b5d0;">Infrastructure for the SADC Trade Corridor • 58 Active Ports • 900+ Sovereign Users</p>
         </div>
     </header>
 
-    <section class="section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <span class="port-label">PORT 11434</span>
-                    <h3>AI & Machine Learning</h3>
-                    <p>Docker & Kubernetes deployment for Ollama models and ML pipelines.</p>
-                    <span class="price-tag">From R5,000/month</span>
-                </div>
+    <div class="container">
+        <div class="services-grid">
+            <!-- TIER 1: CYBERSECURITY AUDITS -->
+            <div class="service-card">
+                <div class="port-badge">🔐 PORT 8102 • 11434</div>
+                <h3>Offensive Security Audits</h3>
+                <p>#1 in South Africa (TryHackMe Platinum→Sapphire League). We perform full‑scope penetration testing, protocol‑level vulnerability discovery, and sudo privilege escalation chains. Ideal for financial institutions, municipalities, and critical infrastructure.</p>
+                <ul style="margin: 1rem 0 0 1.2rem; color: #b0c4de;">
+                    <li>External / Internal network audits</li>
+                    <li>Web application & API security (OWASP)</li>
+                    <li>IoT / IIoT firmware analysis</li>
+                    <li>Compliance readiness (POPIA, ISO 27001)</li>
+                </ul>
+                <div class="price">From R45,000 / audit</div>
+                <a href="../dashboard.html" class="btn">Request Quote →</a>
+            </div>
 
-                <div class="service-card">
-                    <span class="port-label">PORT 8102</span>
-                    <h3>Cloud Migration</h3>
-                    <p>Move infrastructure to secure Urban Gateway regions with port mirroring.</p>
-                    <span class="price-tag">From R8,000/project</span>
-                </div>
+            <!-- TIER 2: SADC TELEMETRY & SCADA -->
+            <div class="service-card">
+                <div class="port-badge">📡 PORT 1883 • 30001 • 8086</div>
+                <h3>SADC Corridor Telemetry</h3>
+                <p>Real‑time monitoring of fleet, utility grids, and border logistics. We deploy lightweight edge nodes (Raspberry Pi / industrial gateways) that report to your Imperial Omega dashboard. Currently tracking 17 active vehicles and 43 villages.</p>
+                <ul style="margin: 1rem 0 0 1.2rem; color: #b0c4de;">
+                    <li>Fleet GPS & temperature sensors (LBS)</li>
+                    <li>Water / energy flow meters (SCADA)</li>
+                    <li>Beira Port expansion telemetry</li>
+                    <li>Custom Node‑RED automation flows</li>
+                </ul>
+                <div class="price">From R12,500 / node + R2,800/month</div>
+                <a href="../dashboard.html" class="btn">Deploy Sensors →</a>
+            </div>
 
-                <div class="service-card" style="border-left: 5px solid #ff4444;">
-                    <span class="port-label">PORT 8082</span>
-                    <h3>Imperial Collector</h3>
-                    <p>Automated debt recovery via SMS & Yoco. 78% success rate (72h).</p>
-                    <span class="price-tag">R1,500/month</span>
-                </div>
-
-                <div class="service-card">
-                    <span class="port-label">PORT 1880</span>
-                    <h3>Node-RED Automation</h3>
-                    <p>Streamline operations with custom software and hardware logic.</p>
-                    <span class="price-tag">From R6,000</span>
-                </div>
-
-                <div class="service-card">
-                    <span class="port-label">PORT 8087</span>
-                    <h3>Business Compliance</h3>
-                    <p>Company Name Reservation, CIPC, SARS, and Yoco account setup.</p>
-<a href="https://c.yoco.com/checkout/ch_rLQQaAAP3GpSpQ1S66yubZkL" class="btn">Pay R175</a>
-                    <span class="price-tag">R175 (Once-off)</span>
-                </div>
-
-                <div class="service-card">
-                    <span class="port-label">PORT 8099</span>
-                    <h3>Enterprise Web Dev</h3>
-                    <p>Custom B2B Hubs, e-commerce, and command center dashboards.</p>
-                    <span class="price-tag">From R3,500</span>
-                </div>
+            <!-- TIER 3: B2B GATEWAYS & USSD BANKING -->
+            <div class="service-card">
+                <div class="port-badge">💸 PORT 8099 • 8082 • 8087</div>
+                <h3>B2B Gateways & USSD Rails</h3>
+                <p>White‑label payment aggregation, Yoco integration, and Cloudflare tunnel backends. We have built the Imperial Collector (78% recovery rate in 72h) and a village USSD airtime broadcasting system.</p>
+                <ul style="margin: 1rem 0 0 1.2rem; color: #b0c4de;">
+                    <li>Custom Yoco checkout flows</li>
+                    <li>USSD / SMS campaign engines</li>
+                    <li>Cross‑border settlement APIs (SADC)</li>
+                    <li>Company registration + SARS + CIPC (R175)</li>
+                </ul>
+                <div class="price">Integration from R8,500 + transaction fees</div>
+                <a href="https://c.yoco.com/checkout/ch_rLQQaAAP3GpSpQ1S66yubZkL" class="btn">Start with R175 →</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <footer class="cipc-footer">
+    <footer class="footer">
         <div class="container">
-            <h2 style="color: #ffd966;">🏛️ HUMBU WANDEME TRADING (PTY) LTD</h2>
-            <p>CIPC: 2026/1730663/07 | B-BBEE Level 1 Contributor</p>
-            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">© 2026 Imperial Omega Stack</p>
+            <p>🏛️ HUMBU WANDEME TRADING (PTY) LTD – CIPC: 2026/1730663/07 – B‑BBEE Level 1</p>
+            <p>ORCID: 0009-0000-9572-4545 | #1 South Africa (Monthly & Sapphire League) | 58/58 Ports Verified</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">© 2026 Imperial Omega Stack – Sovereign Infrastructure for SADC</p>
         </div>
     </footer>
-
-    <script src="../js/main.js"></script>
 </body>
 </html>
