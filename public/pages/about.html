@@ -3,68 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Humbu Wandeme Digital</title>
+    <title>About – Humbu Wandeme | #1 South Africa, Global Python Engineer</title>
     <link rel="stylesheet" href="../css/style.css">
-<style>.button-section { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }</style></head>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0f1e; color: #e0e5f0; font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .hero-section { background: linear-gradient(135deg, #001a2f, #00102a); padding: 4rem 0; text-align: center; border-bottom: 3px solid #ffd966; margin-bottom: 2rem; }
+        .badge { display: inline-block; background: #00ff8820; border: 1px solid #00ff88; padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; margin-bottom: 1rem; }
+        h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+        .subhead { color: #a0b5d0; font-size: 1.2rem; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .stat-card { background: #111a26; border: 1px solid #2a3a50; border-radius: 1rem; padding: 1.5rem; text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; color: #00ff88; }
+        .section-title { font-size: 1.8rem; color: #ffd966; margin: 2rem 0 1rem; border-left: 4px solid #ffd966; padding-left: 1rem; }
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 1.5rem 0; }
+        .verification-list { list-style: none; }
+        .verification-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+        .verification-list li::before { content: "✓"; color: #00ff88; position: absolute; left: 0; }
+        .footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1e2a3a; color: #6b7c93; }
+        @media (max-width: 768px) { .two-column { grid-template-columns: 1fr; } }
+    </style>
+</head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Humbu Wandeme Digital</div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-<li class="nav-item"><a href="Programming-language/index.html" class="nav-link">Learn Coding</a></li>
-<li><a href="dashboard.html" class="btn">Client Portal</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav class="navbar"><div class="nav-container"><div class="logo">🏛️ HUMBU WANDEME</div><ul class="nav-menu"><li><a href="../index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="../dashboard.html">Command Center</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="store.html">Store</a></li></ul></div></nav>
 
-    <section class="hero">
+    <div class="hero-section">
         <div class="container">
-            <h1>🏛️ THE IMPERIAL AUTHORITY</h1>
-            <p>SADC Trade Node #ZA-001 | CEO: Humbulani Mudau's digital future</p>
+            <div class="badge">🇿🇦 #1 SOUTH AFRICA · SAPPHIRE LEAGUE · GLOBAL TOP 5%</div>
+            <h1>Humbulani Mudau</h1>
+            <p class="subhead">CEO & Technical Authority – Humbu Wandeme Trading Enterprise (Pty) Ltd</p>
+            <p>📍 Thohoyandou, Limpopo | Serving the SADC Trade Corridor</p>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h2 style="text-align: center; margin-bottom: 2rem;">Our Story</h2>
-                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
-                    Humbu Wandeme Trading Enterprise (PTY) LTD is a 100% black-owned South African technology company 
-                    managing a 17-vehicle fleet and a 33-port digital stack across 43 villages while keeping data sovereignty and local 
-                    economic growth at the forefront.
-                </p>
-                
-                <h3 style="margin: 2rem 0 1rem;">Our Mission</h3>
-                <p style="margin-bottom: 1.5rem;">
-                    To empower South African businesses with cutting-edge technology solutions that are secure, 
-                    scalable, and locally managed. We believe in building infrastructure from the ground up, 
-                    ensuring that our clients' digital futures are both globally competitive and locally rooted.
-                </p>
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number">#17</div><div>Global Python Rank (CodeCrafters)</div></div>
+            <div class="stat-card"><div class="stat-number">149</div><div>Stages Completed</div></div>
+            <div class="stat-card"><div class="stat-number">58</div><div>Active Ports (Imperial Stack)</div></div>
+            <div class="stat-card"><div class="stat-number">900+</div><div>Verified Sovereign Users</div></div>
+        </div>
 
-                <h3 style="margin: 2rem 0 1rem;">Why Choose Us?</h3>
-                <ul style="margin-left: 2rem; margin-bottom: 2rem;">
-                    <li style="margin-bottom: 0.5rem;"><strong>B-BBEE Level 1 Contributor</strong> - 135% procurement recognition</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Data Sovereignty</strong> - Your data stays in South Africa</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Proven Expertise</strong> - 33-Port Imperial Omega Stack Architecture</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>24/7 Support</strong> - 17-Vehicle Fleet Data Round-the-clock technical assistance Logistics Monitoring</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Competitive Pricing</strong> - CIPC Registered #2026/1730663/07</li>
+        <h2 class="section-title">🔧 Verified Technical Authority</h2>
+        <div class="two-column">
+            <div>
+                <h3 style="color:#00ff88;">Low‑Level Engineering (CodeCrafters)</h3>
+                <ul class="verification-list">
+                    <li>Custom HTTP Server (from scratch)</li>
+                    <li>Custom DNS Resolver</li>
+                    <li>Redis Clone (in‑memory data store)</li>
+                    <li>SQLite Clone (embedded database)</li>
+                    <li>BitTorrent & Kafka protocol implementations</li>
+                    <li>LLM pipeline automation (Claude Code)</li>
                 </ul>
-
-                <div style="background: var(--accent); padding: 2rem; border-radius: 10px; text-align: center;">
-                    <h3>Ready to Start Your Project?</h3>
-                    <p>Contact us today for a free consultation and project assessment.</p>
-                    <a href="contact.html" class="btn">Get Started</a>
-                </div>
+            </div>
+            <div>
+                <h3 style="color:#00ff88;">Cybersecurity & Offensive Ops (TryHackMe)</h3>
+                <ul class="verification-list">
+                    <li>#1 South Africa (Monthly Leaderboard)</li>
+                    <li>Sapphire League – #1 with 6,006 points</li>
+                    <li>Top 5% Global Monthly</li>
+                    <li>Advent of Cyber 2023 – Certificate of Completion</li>
+                    <li>Expertise: Nmap, vulnerability scanning, firewalls, sudo privesc chains</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <script src="../js/main.js"></script>
+        <h2 class="section-title">🎓 The Imperial Cyber Academy</h2>
+        <p>Author of <strong>The Imperial Cyber Book: From Zero to Operator – 60 Days on Termux (Mobile)</strong>. A 12‑week sovereign curriculum teaching:</p>
+        <ul class="verification-list" style="margin-top:0.5rem;">
+            <li>Termux environment & CLI fluency (Android, no root)</li>
+            <li>Shell scripting, automation, and system navigation</li>
+            <li>Flask web servers, API gateways, and port management</li>
+            <li>Data engineering with SQL/JSON and live telemetry dashboards</li>
+            <li>Capstone: build your own Imperial Omega Stack</li>
+        </ul>
+
+        <h2 class="section-title">🌍 SADC Infrastructure & Village Network</h2>
+        <ul class="verification-list">
+            <li>18 active nodes across Limpopo, Zimbabwe, and Mozambique (Beira corridor)</li>
+            <li>43 villages, 900+ verified sovereign users</li>
+            <li>Live telemetry: 17 fleet vehicles, 58/58 ports active</li>
+            <li>True valuation: R269.9B (wealth lock verified)</li>
+            <li>Port of Beira expansion tracking: 14.2M / 18M tons</li>
+        </ul>
+
+        <h2 class="section-title">📚 Academic Research (ORCID 0009-0000-9572-4545)</h2>
+        <ul class="verification-list">
+            <li>Rural Connectivity Solutions & Low‑cost Mesh Networks</li>
+            <li>Precision Agriculture & IoT for Agricultural Development</li>
+            <li>FinTech for Emerging Markets (USSD, mobile money, Yoco integration)</li>
+            <li>Sustainable Supply Chain Technology for the SADC corridor</li>
+        </ul>
+
+        <h2 class="section-title">🏛️ Corporate Registration</h2>
+        <p><strong>Humbu Wandeme Trading Enterprise (Pty) Ltd</strong><br>
+        CIPC: 2026/1730663/07 | B‑BBEE Level 1 | SARS & Yoco Verified<br>
+        Physical: Maniini, Thohoyandou, Limpopo, South Africa</p>
+
+        <div style="background: #0f172a; border: 1px solid #ffd966; border-radius: 1rem; padding: 2rem; text-align: center; margin: 2rem 0;">
+            <p style="font-style: italic; color: #ffd966;">"Until we find the truth, the system remains in audit."</p>
+            <p>— The Director</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>ORCID: 0009-0000-9572-4545 | CodeCrafters Global #17 | TryHackMe #1 South Africa</p>
+            <p>© 2026 Humbu Wandeme Trading Enterprise – Sovereign Infrastructure for SADC</p>
+        </div>
+    </footer>
 </body>
 </html>
