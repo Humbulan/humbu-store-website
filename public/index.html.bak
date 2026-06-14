@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humbu Wandeme Digital - Imperial Omega Command</title>
+    <link rel="stylesheet" href="css/style.css?v=2">
+    <style>
+        .port-mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-top: 20px; }
+        .port-dot { background: #1a2635; border: 1px solid #3a5070; border-radius: 5px; padding: 5px; font-size: 0.7rem; color: #00ff88; font-family: monospace; text-align: center; }
+        .live-indicator { color: #ff4444; font-weight: bold; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.3; } }
+        
+        /* New Fleet Styles */
+        .vehicle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 25px; }
+        .vehicle-card { background: #111a26; border: 1px solid #2d3a5e; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; }
+        .vehicle-card:hover { border-color: #00ff88; transform: translateY(-3px); }
+        .vehicle-id { font-family: monospace; color: #8dd0ff; font-weight: bold; margin-bottom: 5px; }
+        .v-stats { font-size: 1.1rem; color: #ffaa88; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Humbu Wandeme Digital</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="pages/services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="pages/portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="pages/about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="pages/contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="pages/blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="programming-language/index.html" class="nav-link">Cyber Academy</a></li>
+                <li class="nav-item"><a href="payment-portal.html" class="nav-link">Payments</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link btn">Client Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="humbulani-founder-photo.jpg" alt="Humbulani Mudau" style="width: 100%; max-width: 400px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                </div>
+                <div style="flex: 2; min-width: 300px;">
+                    <span class="live-indicator">● LIVE COMMAND CENTER</span>
+                    <h1>Humbulani Mudau</h1>
+                    <p style="font-family: monospace; color: var(--secondary);">🏛️ CIPC: 2026/1730663/07 | SADC #ZA-001</p>
+                    <p style="margin: 1.5rem 0;">Lead Developer of the <strong>Imperial Omega Stack</strong>. Infrastructure for 43 villages.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="pages/contact.html" class="btn">Start Your Project</a>
+                        <a href="pages/services.html" class="btn" style="background: var(--accent); color: var(--dark);">View Services</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #070b14; color: white;">
+        <div class="container">
+            <h2 style="text-align: center;">🚚 Imperial Fleet Network</h2>
+            <p style="text-align: center; color: #a0b5d0;">Real-time telemetry from 17 mobile nodes across Limpopo</p>
+            
+            <div class="vehicle-grid" id="vehicleGrid">
+                </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #0a0f1e; color: white; border-top: 1px solid #2d3a5e;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; text-align: center;">
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">17</h3><p>Vehicles</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">43</h3><p>Villages</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #00ff88;">58</h3><p>Ports</p></div>
+                <div><h3 style="font-size: 2.5rem; color: #ffd966;">B-BBEE 1</h3><p>Level 1</p></div>
+            </div>
+            <div class="port-mini-grid" id="portVisualizer"></div>
+        </div>
+    </section>
+
+    <script>
+        // Inject 17 Vehicles
+        const vGrid = document.getElementById('vehicleGrid');
+        const villages = ['Maniini', 'Sibasa', 'Makhado', 'Thohoyandou', 'Malamulele'];
+        for(let i=1; i<=17; i++) {
+            const v = document.createElement('div');
+            v.className = 'vehicle-card';
+            const temp = (26 + Math.random() * 8).toFixed(1);
+            const loc = villages[Math.floor(Math.random()*villages.length)];
+            v.innerHTML = `<div class="vehicle-id">HMB-FLEET-${i.toString().padStart(2,'0')}</div>
+                           <div class="v-stats">${temp}°C</div>
+                           <div style="font-size: 0.8rem; color: #8a9db0;">📍 ${loc}</div>`;
+            vGrid.appendChild(v);
+        }
+
+        // Inject 33 Ports

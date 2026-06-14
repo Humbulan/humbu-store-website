@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Humbu Wandeme Digital</title>
-    <link rel="stylesheet" href="../css/style.css">
-<style>.button-section { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }</style></head>
+    <title>Contact – Humbu Wandeme Digital</title>
+    <link rel="stylesheet" href="../css/style.css?v=2">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        .contact-form {
+            background: #111a26;
+            border: 1px solid #2a3a50;
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            background: #0a0f1e;
+            border: 1px solid #2a3a50;
+            border-radius: 0.5rem;
+            color: #e0e5f0;
+            font-family: inherit;
+        }
+        .contact-form button {
+            background: #00ff88;
+            color: #0a0f1e;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .contact-form button:hover {
+            background: #00cc77;
+            transform: scale(1.02);
+        }
+        .contact-info {
+            background: #0f172a;
+            border: 1px solid #2a3a50;
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        .contact-info h3 {
+            color: #ffd966;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            margin: 0.5rem 0;
+            color: #cbd5e1;
+        }
+        .trustpilot-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #00ff88;
+            text-decoration: none;
+        }
+        .alert {
+            background: #00ff8820;
+            border: 1px solid #00ff88;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            color: #00ff88;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -13,69 +85,99 @@
             <ul class="nav-menu">
                 <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-<li><a href="payment-portal.html">Payments</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Payments</a></li>
-<li><a href="../programming-language/index.html">Cyber Academy</a></li>
-<li><a href="../dashboard.html" class="btn">Client Portal</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="../programming-language/index.html" class="nav-link">Cyber Academy</a></li>
+                <li class="nav-item"><a href="../payment-portal.html" class="nav-link">Payments</a></li>
+                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <div class="hero" style="padding: 60px 0; text-align: center;">
         <div class="container">
-            <h1>Contact Us</h1>
-            <p>Let's build something amazing together</p>
+            <h1>📞 Contact Imperial Command</h1>
+            <p style="color: #a0b5d0;">Let's build sovereign infrastructure for the SADC corridor</p>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Get In Touch</h3>
-                    <form style="text-align: left;">
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: block; margin-bottom: 0.5rem;">Name</label>
-                            <input type="text" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: block; margin-bottom: 0.5rem;">Email</label>
-                            <input type="email" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: block; margin-bottom: 0.5rem;">Project Type</label>
-                            <select style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px;">
-                                <option>Web Development</option>
-                                <option>AI Solutions</option>
-                                <option>Cloud Migration</option>
-                                <option>Consulting</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div style="margin-bottom: 1rem;">
-                            <label style="display: block; margin-bottom: 0.5rem;">Message</label>
-                            <textarea style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 5px; height: 100px;"></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-                <div class="service-card">
-                    <h3>Contact Information</h3>
-                    <div style="text-align: left;">
-                        <p><strong>Email:</strong><br>humbulani@humbu.store</p>
-                        <p><strong>Phone:</strong><br>079 465 8481</p>
-                        <p><strong>Address:</strong><br>Thohoyandou, Limpopo, 0950</p>
-                        <p><strong>Business Hours:</strong><br>Monday - Friday: 8:00 - 17:00<br>Saturday: 9:00 - 13:00</p>
-                        <p><strong>Emergency Support:</strong><br>24/7 Available for existing clients</p>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Form with POST to local API -->
+            <div class="contact-form">
+                <h3 style="color: #ffd966; margin-bottom: 1.5rem;">Get In Touch</h3>
+                <div id="formStatus" class="alert" style="display:none;"></div>
+                <form id="contactForm">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <select id="projectType">
+                        <option value="SADC Telemetry Deployment">📡 SADC Corridor Telemetry Deployment</option>
+                        <option value="Security Auditing">🔒 Offensive Security & Network Auditing</option>
+                        <option value="Academy Sponsorship">🎓 Corporate Academy Cohort Sponsorship</option>
+                        <option value="B2B Payment Rails">💳 B2B Payment Rails & Infrastructure Setup</option>
+                    </select>
+                    <textarea id="message" rows="5" placeholder="Tell us about your project..."></textarea>
+                    <button type="submit">Send Message →</button>
+                </form>
+            </div>
+
+            <!-- Contact Info Card -->
+            <div class="contact-info">
+                <h3>📡 Direct Channels</h3>
+                <p><strong>Email:</strong> humbulani@humbu.store</p>
+                <p><strong>Phone / WhatsApp:</strong> 079 465 8481</p>
+                <p><strong>Address:</strong> Thohoyandou, Limpopo, 0950</p>
+                <p><strong>Business Hours:</strong><br>
+                Mon–Fri: 8:00 – 17:00<br>
+                Sat: 9:00 – 13:00</p>
+                <p><strong>🚨 Sovereign Sentry Status:</strong><br>24/7/365 Port Monitoring and automated infrastructure failover support for contract operators.</p>
+                <a href="https://www.trustpilot.com/review/humbu.store" target="_blank" class="trustpilot-link">⭐ See our verified Trustpilot reviews →</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <script src="../js/main.js"></script>
+    <footer>
+        <div class="container">
+            <p>🇿🇦 #1 SOUTH AFRICA · <a href="https://www.trustpilot.com/review/humbu.store" target="_blank" style="color: #00ff88;">⭐ Rate us on Trustpilot</a></p>
+            <p>© 2026 Humbu Wandeme Trading Enterprise – Sovereign Infrastructure for SADC</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const statusDiv = document.getElementById('formStatus');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = 'Sending...';
+            const payload = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                projectType: document.getElementById('projectType').value,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+            try {
+                const response = await fetch('http://localhost:8109/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (response.ok) {
+                    statusDiv.innerHTML = '✅ Message sent successfully! We will contact you soon.';
+                    form.reset();
+                } else {
+                    statusDiv.innerHTML = '❌ Server error. Please try again later.';
+                }
+            } catch (err) {
+                statusDiv.innerHTML = '❌ Network error. Please check your connection.';
+            }
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        });
+    </script>
 </body>
 </html>
-<div style="text-align: center; margin-top: 2rem;">
-    <a href="https://www.trustpilot.com/review/humbu.store" target="_blank" style="color: #00ff88; font-size: 1rem;">⭐ See our verified Trustpilot reviews</a>
-</div>

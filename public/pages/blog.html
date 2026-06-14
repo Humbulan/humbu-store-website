@@ -3,9 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Humbu Wandeme Digital</title>
-    <link rel="stylesheet" href="../css/style.css">
-<style>.button-section { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }</style></head>
+    <title>Imperial Insights – Humbu Wandeme Digital</title>
+    <link rel="stylesheet" href="../css/style.css?v=2">
+    <style>
+        /* Additional blog-specific dark styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .blog-card {
+            background: #111a26;
+            border: 1px solid #2a3a50;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+        }
+        .blog-card h3 {
+            color: #ffd966;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .blog-card p {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .read-more {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.2s;
+        }
+        .read-more:hover {
+            color: #ffd966;
+            transform: translateX(5px);
+        }
+        .hero-blog {
+            background: linear-gradient(135deg, #001a2f, #00102a);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 3px solid #ffd966;
+            margin-bottom: 2rem;
+        }
+        .hero-blog h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .hero-blog p {
+            color: #a0b5d0;
+        }
+    </style>
+</head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -17,42 +72,57 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-<li class="nav-item"><a href="../programming-language/index.html" class="nav-link">Cyber Academy</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Payments</a></li>
-<li><a href="../dashboard.html" class="btn">Client Portal</a></li>
+                <li class="nav-item"><a href="../programming-language/index.html" class="nav-link">Cyber Academy</a></li>
+                <li class="nav-item"><a href="../payment-portal.html" class="nav-link">Payments</a></li>
+                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <div class="hero-blog">
         <div class="container">
-            <h1>Our Blog</h1>
-            <p>Insights, tutorials, and industry news</p>
+            <h1>📡 Imperial Insights</h1>
+            <p>Enterprise infrastructure, sovereign training, and SADC trade intelligence</p>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>🏛️ Legacy Vault Status: ACTIVE</h3>
-                    <p>Security: MAXIMUM | ΔΥΞΣ Protection Active. Preserving 909 total users. for production deployment.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-                <div class="service-card">
-                    <h3>💰 Imperial Portfolio Update</h3>
-                    <p>Current Valuation: R10,235,466.32. Managed under Imperial Nexus protocols. and data sovereignty.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
-                <div class="service-card">
-                    <h3>Building Systems from Scratch</h3>
-                    <p>Our journey building SQLite, Git, DNS, and HTTP servers from the ground up.</p>
-                    <a href="#" class="btn">Read More</a>
-                </div>
+    <div class="container">
+        <div class="blog-grid">
+            <!-- Card 1: Imperial Cyber Academy -->
+            <div class="blog-card">
+                <h3>🎓 The Imperial Cyber Academy</h3>
+                <p>12‑week sovereign curriculum: <strong>From Zero to Operator – 60 Days on Termux (Mobile)</strong>. Learn server ops, scripting, data engineering, and automation – all on a smartphone. No root required. Build your own Imperial Stack.</p>
+                <a href="../programming-language/index.html" class="read-more">Explore Academy →</a>
+            </div>
+
+            <!-- Card 2: Corporate CSI & Cohort Sponsorship -->
+            <div class="blog-card">
+                <h3>🤝 Corporate CSI & Cohort Sponsorship</h3>
+                <p>Fulfill your B‑BBEE Skills Development targets while training local youth in Thohoyandou. We handle recruitment, curriculum delivery, and placement. Partner with us to build a pipeline of sovereign tech operators.</p>
+                <a href="contact.html" class="read-more">Sponsor a Cohort →</a>
+            </div>
+
+            <!-- Card 3: SADC Procurement & Tender Readiness -->
+            <div class="blog-card">
+                <h3>📑 SADC Procurement & Tender Readiness</h3>
+                <p>Fully compliant: CIPC 2026/1730663/07, B‑BBEE Level 1, SARS & Yoco verified. We are tender‑ready for municipal bids (Thulamela, Makhado) and cross‑border logistics contracts. Partner with a verified sovereign entity.</p>
+                <a href="contact.html" class="read-more">Request Tender Package →</a>
             </div>
         </div>
-    </section>
 
-    <script src="../js/main.js"></script>
+        <!-- Optional extra blog post – you can add more later -->
+        <div style="background: #0f172a; border-radius: 1rem; padding: 2rem; margin: 2rem 0; text-align: center; border: 1px solid #2a3a50;">
+            <h3 style="color: #ffd966;">📡 Live Infrastructure Sentry</h3>
+            <p style="color: #cbd5e1;">58 active ports · 17 vehicles · 43 villages · Real‑time telemetry</p>
+            <a href="../dashboard.html" class="read-more">View Command Center →</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>🇿🇦 #1 SOUTH AFRICA · <a href="https://www.trustpilot.com/review/humbu.store" target="_blank" style="color: #00ff88;">⭐ Rate us on Trustpilot</a></p>
+            <p>© 2026 Humbu Wandeme Trading Enterprise – Sovereign Infrastructure for SADC</p>
+        </div>
+    </footer>
 </body>
 </html>

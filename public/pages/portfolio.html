@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Portfolio - Humbu Wandeme Digital</title>
-    <link rel="stylesheet" href="../css/style.css">
-<style>.button-section { display: flex; overflow-x: auto; white-space: nowrap; gap: 10px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; }</style></head>
+    <title>Portfolio – Humbu Wandeme Digital</title>
+    <link rel="stylesheet" href="../css/style.css?v=2">
+    <style>
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .portfolio-card {
+            background: #111a26;
+            border: 1px solid #2a3a50;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+        }
+        .portfolio-card h3 {
+            color: #ffd966;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-card p {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .repo-link {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .repo-link:hover {
+            color: #ffd966;
+        }
+    </style>
+</head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
@@ -17,59 +56,90 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-<li><a href="../programming-language/index.html">Cyber Academy</a></li>
-<li><a href="payment-portal.html">Payments</a></li>
-                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Payments</a></li>
-<li><a href="../programming-language/index.html">Cyber Academy</a></li>
-<li><a href="../dashboard.html" class="btn">Client Portal</a></li>
+                <li class="nav-item"><a href="../programming-language/index.html" class="nav-link">Cyber Academy</a></li>
+                <li class="nav-item"><a href="../payment-portal.html" class="nav-link">Payments</a></li>
+                <li class="nav-item"><a href="../dashboard.html" class="nav-link btn">Client Portal</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <div class="hero" style="padding: 60px 0; text-align: center;">
         <div class="container">
-            <h1>Our Project Portfolio</h1>
-            <p>Building the future, one project at a time</p>
+            <h1>🏗️ Core Engineering Portfolio</h1>
+            <p style="color: #a0b5d0;">Low‑level systems, protocols, and sovereign infrastructure</p>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
-        <div class="container">
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Build Your Own SQLite</h3>
-                    <p>Complete database engine implementation from scratch</p>
-                    <a href="https://github.com/Humbulan/build-your-own-sqlite" class="btn" target="_blank">View on GitHub</a>
-                </div>
-                <div class="service-card">
-                    <h3>Build Your Own Git</h3>
-                    <p>Version control system implementation</p>
-                    <a href="https://github.com/Humbulan/build-your-own-git-project" class="btn" target="_blank">View on GitHub</a>
-                </div>
-                <div class="service-card">
-                    <h3>Build Your Own DNS Server</h3>
-                    <p>Low-level networking and DNS protocol implementation</p>
-                    <a href="https://github.com/Humbulan/build-your-own-dns-server" class="btn" target="_blank">View on GitHub</a>
-                </div>
-                <div class="service-card">
-                    <h3>Build Your Own HTTP Server</h3>
-                    <p>Web server implementation with protocol handling</p>
-                    <a href="https://github.com/Humbulan/build-your-own-http-server" class="btn" target="_blank">View on GitHub</a>
-                </div>
-                <div class="service-card">
-                    <h3>Humbu Store Website</h3>
-                    <p>Complete business website with advanced features</p>
-                    <a href="https://humbu.store" class="btn" target="_blank">Visit Live Site</a>
-                </div>
-                <div class="service-card">
-                    <h3>Smart Notes AI</h3>
-                    <p>AI-powered note taking application</p>
-                    <a href="https://github.com/Humbulan/smart-notes-ai" class="btn" target="_blank">View on GitHub</a>
-                </div>
+    <div class="container">
+        <div class="portfolio-grid">
+            <!-- SQLite -->
+            <div class="portfolio-card">
+                <h3>Build Your Own SQLite</h3>
+                <p>Complete database engine implementation from scratch – storage, B‑tree, SQL parser.</p>
+                <a href="https://github.com/Humbulan/build-your-own-sqlite" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Git -->
+            <div class="portfolio-card">
+                <h3>Build Your Own Git</h3>
+                <p>Version control system implementation – objects, references, merge logic.</p>
+                <a href="https://github.com/Humbulan/build-your-own-git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- DNS Server -->
+            <div class="portfolio-card">
+                <h3>Build Your Own DNS Server</h3>
+                <p>Low‑level networking and DNS protocol implementation (UDP, recursive resolution).</p>
+                <a href="https://github.com/Humbulan/build-your-own-dns" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- HTTP Server -->
+            <div class="portfolio-card">
+                <h3>Build Your Own HTTP Server</h3>
+                <p>Web server implementation with protocol handling, routing, and static file serving.</p>
+                <a href="https://github.com/Humbulan/build-your-own-http" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Grep -->
+            <div class="portfolio-card">
+                <h3>Build Your Own Grep</h3>
+                <p>Pattern matching tool – regex engine, file scanning, output formatting.</p>
+                <a href="https://github.com/Humbulan/build-your-own-grep.git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- BitTorrent -->
+            <div class="portfolio-card">
+                <h3>Build Your Own BitTorrent</h3>
+                <p>Peer‑to‑peer file sharing protocol – tracker, peer wire, piece management.</p>
+                <a href="https://github.com/Humbulan/build-your-own-bittorrent.git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Kafka -->
+            <div class="portfolio-card">
+                <h3>Build Your Own Kafka</h3>
+                <p>Distributed streaming platform – producers, consumers, partitions, log segments.</p>
+                <a href="https://github.com/Humbulan/build-your-own-kafka.git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Programming Language -->
+            <div class="portfolio-card">
+                <h3>Programming Language</h3>
+                <p>Custom language implementation – lexer, parser, interpreter/compiler.</p>
+                <a href="https://github.com/Humbulan/Programming-language.git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Redis -->
+            <div class="portfolio-card">
+                <h3>Build Your Own Redis</h3>
+                <p>In‑memory data store – RESP protocol, data structures, persistence.</p>
+                <a href="https://github.com/Humbulan/build-your-own-redis.git" target="_blank" class="repo-link">🔗 GitHub →</a>
+            </div>
+            <!-- Claude Code -->
+            <div class="portfolio-card">
+                <h3>Build Your Own Claude Code</h3>
+                <p>LLM pipeline automation – API orchestration, prompt chaining, tool calling.</p>
+                <a href="https://github.com/Humbulan/Build-your-own-Claude-Code.git" target="_blank" class="repo-link">🔗 GitHub →</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <script src="../js/main.js"></script>
+    <footer>
+        <div class="container">
+            <p>🇿🇦 #1 SOUTH AFRICA · <a href="https://www.trustpilot.com/review/humbu.store" target="_blank" style="color: #00ff88;">⭐ Rate us on Trustpilot</a></p>
+            <p>© 2026 Humbu Wandeme Trading Enterprise – Sovereign Infrastructure for SADC</p>
+        </div>
+    </footer>
 </body>
 </html>
